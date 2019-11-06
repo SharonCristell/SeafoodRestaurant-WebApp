@@ -24,10 +24,12 @@ namespace ProyectoPM.Controllers
         public IActionResult Crear(Usuario model){
             if(ModelState.IsValid){
                 var usuario = new Usuario();
+                
                 usuario.Nombre =model.Nombre;
                 usuario.Apellido = model.Apellido;
                 usuario.Genero = model.Genero;
-                usuario.Correo = model.Correo;
+                usuario.UserName = model.Correo;
+                usuario.Email = model.Correo;
 
                 IdentityResult resultado = _um.CreateAsync(usuario,model.Password1).Result;
 

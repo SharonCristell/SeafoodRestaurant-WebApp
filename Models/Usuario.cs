@@ -18,6 +18,7 @@ namespace ProyectoPM.Models
         public string Genero{get;set;}
 
         [Required]
+        [EmailAddress]
         [Display(Name="Correo Electrónico")]
         public string Correo{get;set;}
 
