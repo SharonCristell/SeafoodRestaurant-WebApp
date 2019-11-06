@@ -14,7 +14,7 @@ namespace ProyectoPM.Controllers
             _context = c;
             _sim = s;
             _um = um;
-        }
+        } 
 
         public IActionResult Crear(){
             return View();
