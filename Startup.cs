@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProyectoPM.Models;
 
 namespace ProyectoPM
 {
@@ -30,9 +33,20 @@ namespace ProyectoPM
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddDbContext<RestauranteContext>(o=>o.UseMySql("Server=localhost;Database=RestauranteDB;User=root;Password=;"));
+            services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<RestauranteContext>();
 
+            //Configuracion para la contraseña menos fuerte
+            services.Configure<IdentityOptions>(options => 
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,9 +63,11 @@ namespace ProyectoPM
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

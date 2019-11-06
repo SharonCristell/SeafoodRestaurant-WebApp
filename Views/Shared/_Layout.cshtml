@@ -31,6 +31,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
+                        @if(!User.Identity.IsAuthenticated){
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="~/cuenta/crear">Crear Cuenta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="~/cuenta/login">Iniciar Sesión</a>
+                            </li>
+                        }
+                        else{
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="~/cuenta/logout">Cerrar Sesión</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
