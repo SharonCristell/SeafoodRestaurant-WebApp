@@ -1,0 +1,14 @@
+@model List<Categoria>
+
+<h1>Lista de categorías</h1>
+
+@if (Model.Count == 0) {
+    <p>No hay categorías registradas</p>
+}
+
+<ul class="list">
+@foreach (var item in Model)
+{
+    <li>@item.Nombre</li>
+}
+</ul>
