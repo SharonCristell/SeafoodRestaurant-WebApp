@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoPM.Models;
@@ -9,14 +10,54 @@ namespace ProyectoPM.Controllers
         private RestauranteContext _context;
         private SignInManager<Usuario> _sim;
         private UserManager<Usuario> _um;
+        private RoleManager<IdentityRole> _rm;
 
-        public CuentaController(RestauranteContext c, SignInManager<Usuario> s,UserManager<Usuario> um){
+        public CuentaController(
+            RestauranteContext c, 
+            SignInManager<Usuario> s,
+            UserManager<Usuario> um,
+            RoleManager<IdentityRole> rm){
             _context = c;
             _sim = s;
             _um = um;
+            _rm = rm;
         } 
 
+        public IActionResult AsociarRol(){
+            ViewBag.Usuarios = _um.Users.ToList();
+            ViewBag.Roles = _rm.Roles.ToList();
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AsociarRol(string usuario,string rol){
+            var user = _um.FindByIdAsync(usuario).Result;
+
+            var resultado = _um.AddToRoleAsync(user,rol).Result;
+
+            return RedirectToAction("index","home");
+        }
+
+        public IActionResult CrearRol(){
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CrearRol(string nombre){
+            var rol = new IdentityRole();
+            rol.Name = nombre;
+
+            var resultado = _rm.CreateAsync(rol).Result;
+            
+            return RedirectToAction("index","home");
+        }
+
         public IActionResult Crear(){
+            return View();
+        }
+
+        public IActionResult AccesoDenegado(){
             return View();
         }
 

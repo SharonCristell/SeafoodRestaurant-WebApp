@@ -45,6 +45,12 @@ namespace ProyectoPM
                 options.Password.RequireNonAlphanumeric = false;
             });
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Cuenta/Login";
+                options.AccessDeniedPath = "/Cuenta/AccesoDenegado";
+            });
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
         }

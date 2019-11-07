@@ -15,5 +15,24 @@ namespace ProyectoPM.Controllers
             return View();
         }
 
+        public IActionResult Carta()
+        {
+            return View();
+        }
+
+        public IActionResult Reserva()
+        {
+            return View();
+        }
+
+        public IActionResult Galeria()
+        {
+            return View();
+        }
+
+        public IActionResult Ubicanos()
+        {
+            return View();
+        }
     }
 }

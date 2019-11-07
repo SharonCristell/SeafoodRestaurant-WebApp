@@ -1,0 +1,20 @@
+@using Microsoft.AspNetCore.Identity
+
+<h1>Asociar Rol</h1>
+
+<form method="post">
+
+
+    <div class="form-group">
+        <label>Rol</label>        
+        <select class="form-control" name="rol">
+            @foreach (var item in (List<IdentityRole>)ViewBag.Roles)
+            {
+                <option value="@item.Name">@item.Name</option>
+            }
+        </select>
+    </div>
+
+    <button class="btn btn-primary">Asociar</button>
+
+</form>
