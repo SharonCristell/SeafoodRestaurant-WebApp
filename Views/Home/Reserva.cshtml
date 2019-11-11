@@ -24,7 +24,7 @@
                                         <option value="0">--Seleccionar--</option>
                                         @foreach (var t in sucursal)
                                         {
-                                        <option value="@t.Id">@t.Distrito</option>
+                                        <option value="@t.Distrito">@t.Distrito</option>
                                         }
                                 </select>
                         </div> 
@@ -54,12 +54,23 @@
                                 @foreach (var s in sucursal)
                                 {
                                         <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-3">
-                                                <div class="sucursal">
-                                                       
-                                                                <p style="text-align: center">@s.Nombre</p>
-                                                        
+                                                <div class="sucursalInfo">
+
+                                                                <h1 style="text-align: center">@s.Nombre</h1>
+                                                                <p style="text-align: center">@s.Direccion</p>
+                                                                <p style="text-align: center">@s.Distrito</p>
+                                                                <p style="text-align: center">@s.Correo</p>
+                                                                <div>
+                                                                <iframe src="@s.DireccionMaps" 
+                                                                width="300" height="350" frameborder="0" 
+                                                                style="border:0;" allowfullscreen=""></iframe>
+
+                                                                </div>
+
+
                                                 </div>
                                         </div>
+
                                 }
                         </div>
                 </div>

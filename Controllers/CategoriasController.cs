@@ -5,7 +5,7 @@ using ProyectoPM.Models;
 
 namespace ProyectoPM.Controllers
 {
-    [Authorize(Roles="Administrador")]
+    //[Authorize(Roles="Administrador")]
     public class CategoriasController : Controller
     {
         private RestauranteContext _context;
@@ -13,10 +13,17 @@ namespace ProyectoPM.Controllers
             _context = c;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int categoria)
         {
-            var lista = _context.Categorias.ToList();
-            return View(lista);
+            var categorias =  _context.Categorias.OrderByDescending(x => x.Id).ToList();
+            var productos = _context.Productos.Where(x => x.CategoriaId==categoria).OrderByDescending(x => x.Id).ToList();
+            if (categoria!=0)
+            {
+                productos = _context.Productos.Where(x => x.CategoriaId==categoria).ToList();
+            }
+            ViewBag.p = productos;
+            ViewBag.c = categorias;
+            return View();
         }
         public IActionResult Registro()
         {

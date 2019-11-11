@@ -104,22 +104,55 @@ input[type="password"]:focus {
                         else{
                             //if--->vista administrador
                             @if (User.IsInRole("Administrador")){
+
+
+                                <li class="nav-item dropdown">
+                            <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user"></span> 
+                                <strong></strong>
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="navbar-login">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p class="text-center">
+                                                    <a  class="btn btn-light btn-block" asp-controller="Categorias" asp-action="registro"><strong>Cambiar Contraseña</strong></a>
+                                                </p>
+                                                <p class="text-center">
+                                                    <a class="btn btn-light btn-block" asp-controller="Productos" asp-action="registro" class="btn btn-primary btn-block btn-sm"><strong>Historial de Productos</strong></a>
+                                                </p>
+                                                <p class="text-center">
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="crearrol" class="btn btn-primary btn-block btn-sm"><strong>Crear rol</strong></a>
+                                                </p>
+                                                <p class="text-center">
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="asociarrol" class="btn btn-primary btn-block btn-sm"><strong>Asociar Rol</strong></a>
+                                                </p>
+                                                <p class="text-center">
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="logout" class="btn btn-primary btn-block btn-sm"><strong>Registrar Sucursal</strong></a>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p class="text-center">
+                                                    <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                             
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="~/categorias/registro">Registrar Categorías</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="~/productos/registro">Registro de productos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="~/cuenta/crearrol">Crear Rol</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="~/cuenta/asociarrol">Asociar Rol</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="~/cuenta/logout">Cerrar Sesión</a>
-                                </li>
+                                
 
                             }
                             else{
@@ -127,7 +160,7 @@ input[type="password"]:focus {
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user"></span> 
-                                <strong>Bienvenido(a), User.Identity.Name</strong>
+                                <strong>Bienvenido(a), @Context.User.Identity.Name</strong>
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </a>
                             <ul class="dropdown-menu">
