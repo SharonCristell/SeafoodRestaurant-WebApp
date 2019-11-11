@@ -9,6 +9,8 @@ namespace ProyectoPM.Models
         public DbSet<Usuario> Usuarios {get; set;}
         public DbSet<Categoria> Categorias {get; set;}
         public DbSet<Producto> Productos {get; set;}
+
+         public DbSet<Sucursal> Sucursales { get; set; }  
         public RestauranteContext(DbContextOptions<RestauranteContext> o) : base(o){
 
         } 
