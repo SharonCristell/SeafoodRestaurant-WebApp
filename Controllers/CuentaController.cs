@@ -61,6 +61,7 @@ namespace ProyectoPM.Controllers
             return View();
         }
 
+        
         [HttpPost]
         public IActionResult Crear(Usuario model){
             if(ModelState.IsValid){
@@ -109,6 +110,15 @@ namespace ProyectoPM.Controllers
         public IActionResult Logout(){
             _sim.SignOutAsync();
             return RedirectToAction("index","home");
+        }
+
+        public IActionResult HistorialUsario()
+        {
+          var user = _um.FindByNameAsync(User.Identity.Name).Result;
+          var reservas = _context.Reservas.Where(x=> x.Nombre==User.Identity.Name).ToList();           
+          ViewBag.r = reservas;
+          ViewBag.usuario = user.UserName;
+          return View();
         }
         
     }

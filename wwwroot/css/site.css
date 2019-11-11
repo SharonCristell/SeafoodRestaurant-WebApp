@@ -54,3 +54,73 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*Inicio del Index*/
+
+.sucursal{
+  width:197px;
+  border: 1px solid black;
+  background-color: rgb(245, 245, 245);
+  margin: 10px 20px;
+  padding:10px 20px;
+  border:solid 1px #ccc;
+  animation-delay: 3s;
+  margin: auto;
+}
+
+
+.sucursal a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  
+}
+
+.sucursalInfo{
+  width:350px;
+  border: 1px solid black;
+  background-color: rgb(245, 245, 245);
+  margin: 10px 20px;
+  padding:10px 20px;
+  border:solid 1px #ccc;
+  animation-delay: 3s;
+  margin: auto;
+}
+
+
+/*      Mascota/Detalles      */
+.contenedordetallesMascota{
+  background-color: rgb(245, 245, 245);
+  border: solid 3px black;
+  margin: 15px auto 0 auto;
+}
+
+.datosMascota{
+  background-color: rgba(245, 238, 238, 0.5);
+  margin-left: 20px;
+  padding: 20px;
+}
+.fondo{
+  border: 1px solid black;
+  background-image: url("../imagenes/logo.jpg");
+  background-repeat: repeat;
+}
+/*nav User*/
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}

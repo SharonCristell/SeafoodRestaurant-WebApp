@@ -1,1 +1,53 @@
-<h1>Ubicanos</h1>
+
+@{
+    ViewData["Title"] = "Home Page";
+    var sucursal = (List<Sucursal>)ViewBag.su;
+ 
+}
+@model List<Sucursal>
+
+<div class="container">   
+        
+</div>
+      
+
+<div class="container">
+        <div class="row">
+                <div class="col-sm">
+                        <div class="text-center">
+                                <h2>Ubicanos en nuestras siguientes sucursales</h2>
+                        </div>
+                </div>
+        </div>
+        @if(sucursal.Count==0){
+                <h2 style="color: red" class="text-center">No se encontraron resultados</h2>
+        }else{
+                <div class="fondo">
+                        <div class="row am">
+                                @foreach (var s in sucursal)
+                                {
+                                        <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-3">
+                                                <div class="sucursalInfo">
+                                                        
+                                                                <h1 style="text-align: center">@s.Nombre</h1>
+                                                                <p style="text-align: center">@s.Direccion</p>
+                                                                <p style="text-align: center">@s.Distrito</p>
+                                                                <p style="text-align: center">@s.Correo</p>
+                                                                <div>
+                                                                <iframe src="@s.DireccionMaps" 
+                                                                width="300" height="350" frameborder="0" 
+                                                                style="border:0;" allowfullscreen=""></iframe>
+                                                                                                                                
+                                                                </div>
+
+                                                       
+                                                </div>
+                                        </div>
+                                }
+                        </div>
+                </div>
+        }
+</div>
+
+
+

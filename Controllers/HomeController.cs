@@ -43,7 +43,12 @@ namespace ProyectoPM.Controllers
 
         public IActionResult Ubicanos()
         {
+            var sucursales = _context.Sucursales.ToList();
+
+            ViewBag.su = sucursales;
+
             return View();
+        
         }
     }
 }

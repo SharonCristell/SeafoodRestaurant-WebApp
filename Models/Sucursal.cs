@@ -29,6 +29,10 @@ namespace ProyectoPM.Models
         [Display(Name="Correo Electrónico")]
         public string Correo{get;set;}
 
+        [Required]
+        [Display(Name="DireccionMaps")]
+        public string DireccionMaps{get;set;}
+
         
        
 

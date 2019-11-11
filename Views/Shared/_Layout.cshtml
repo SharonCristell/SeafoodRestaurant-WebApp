@@ -16,12 +16,63 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
+ <style>
+        input[type="text"] {
+        width: 100%;
+        border: 2px solid #0000FF;
+        border-radius: 4px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: 0.3s;
+}
+input[type="email"] {
+        width: 100%;
+        border: 2px solid #0000FF;
+        border-radius: 4px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: 0.3s;
+}
+input[type="password"] {
+        width: 100%;
+        border: 2px solid #0000FF;
+        border-radius: 4px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: 0.3s;
+}
+        input[type="text"]:focus {
+        border-color: dodgerBlue;
+        box-shadow: 0 0 8px 0 dodgerBlue;
+}
+input[type="email"]:focus {
+        border-color: dodgerBlue;
+        box-shadow: 0 0 8px 0 dodgerBlue;
+}
+input[type="password"]:focus {
+        border-color: dodgerBlue;
+        box-shadow: 0 0 8px 0 dodgerBlue;
+}
+    </style>
+
+
+
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ProyectoPM</a>
+                  <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img class="img-fluid" src="~/imagenes/logo.jpg" alt="" width="100px">
+                </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,10 +81,7 @@
                     <ul class="navbar-nav flex-grow-1">
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categorias" asp-action="Index">La Carta</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">La Carta</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Reserva">Reservas</a>
@@ -75,14 +123,44 @@
 
                             }
                             else{
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="~/cuenta/logout">Cerrar Sesión</a>
+                                <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user"></span> 
+                                <strong>Bienvenido(a), User.Identity.Name</strong>
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="navbar-login">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p class="text-center">
+                                                    <a  class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="CambiarContrasena"><strong>Cambiar Contraseña</strong></a>
+                                                </p>
+                                                <p class="text-center">
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="HistorialUsuario" class="btn btn-primary btn-block btn-sm"><strong>Historial de Pedidos</strong></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
-                                /*
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="~/cuenta/logout">Historial</a>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p class="text-center">
+                                                    <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
-                                */
+                            </ul>
+                        </li>
+                    </ul>
+                                
                             }
                             
 
