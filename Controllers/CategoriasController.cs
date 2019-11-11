@@ -5,7 +5,7 @@ using ProyectoPM.Models;
 
 namespace ProyectoPM.Controllers
 {
-    [Authorize(Roles="Administrador")]
+    //[Authorize(Roles="Administrador")]
     public class CategoriasController : Controller
     {
         private RestauranteContext _context;

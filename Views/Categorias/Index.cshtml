@@ -9,6 +9,6 @@
 <ul class="list">
 @foreach (var item in Model)
 {
-    <li>@item.Nombre</li>
+    <li><a asp-controller="Productos" asp-action="Index">@item.Nombre</a></li>
 }
 </ul>

@@ -33,11 +33,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Carta">La Carta</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categorias" asp-action="Index">La Carta</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Reserva">Reservas</a>
-                        </li>
+                        </li>       
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Galeria">Galería</a>
                         </li>
@@ -58,7 +58,7 @@
                             @if (User.IsInRole("Administrador")){
                             
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" href="~/categorias/registro">Registro de categorias</a>
+                                    <a class="nav-link text-dark" href="~/categorias/registro">Registrar Categorías</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" href="~/productos/registro">Registro de productos</a>
