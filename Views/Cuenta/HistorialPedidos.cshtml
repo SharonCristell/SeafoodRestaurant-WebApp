@@ -1,0 +1,9 @@
+<div class="form-group">
+        <label asp-for="Categoria"></label>
+        <select asp-for="CategoriaId" class="form-control">
+            @foreach (var item in (List<Categoria>)ViewBag.Categorias)
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+    </div>
