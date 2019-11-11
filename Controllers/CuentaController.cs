@@ -73,7 +73,8 @@ namespace ProyectoPM.Controllers
                 usuario.Email = model.Correo;
 
                 IdentityResult resultado = _um.CreateAsync(usuario,model.Password1).Result;
-
+                var r = _um.AddToRoleAsync(usuario, "Usuario").Result;
+                
                 if(resultado.Succeeded){
                     return RedirectToAction("index","home");
                 }

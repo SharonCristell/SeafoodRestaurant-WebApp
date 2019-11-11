@@ -15,10 +15,15 @@
         <input asp-for="Apellido" class="form-control">
     </div>
 
-    <div class="form-group">
+    
+     <div class="form-group">
         <label asp-for="Genero"></label>
-        <input asp-for="Genero" class="form-control">
+        <select asp-for="Genero" class="form-control">
+            <option value="Femenino">Femenino</option> 
+            <option value="Masculino">Masculino</option>
+        </select>
     </div>
+
 
     <div class="form-group">
         <label asp-for="Correo"></label>
