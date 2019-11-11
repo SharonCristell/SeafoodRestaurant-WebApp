@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Home Page";
+    var reserva = (List<Reserva>)ViewBag.r;
     var sucursal = (List<Sucursal>)ViewBag.s;
   
 }
@@ -24,6 +25,7 @@
                                         <option value="0">--Seleccionar--</option>
                                         @foreach (var t in sucursal)
                                         {
+                                        
                                         <option value="@t.Distrito">@t.Distrito</option>
                                         }
                                 </select>

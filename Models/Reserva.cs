@@ -27,6 +27,9 @@ namespace ProyectoPM.Models
         [Display(Name="Descripcion")]
         public string Descripcion{get;set;}
 
+        public Sucursal Sucursal { get; set; }
+        public int SucursalId { get; set; }
+
 
     }
 }

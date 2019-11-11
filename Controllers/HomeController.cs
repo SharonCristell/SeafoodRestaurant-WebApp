@@ -25,13 +25,8 @@ namespace ProyectoPM.Controllers
 
         public IActionResult Reserva(string distrito)
         {
-                              
-            var sucursal = _context.Sucursales.Where(x=> x.Nombre!=null).OrderByDescending(x=>x.Id).ToList();              
-                 if(distrito!="" && distrito!=null){
-                    sucursal = sucursal.Where(x=>x.Distrito==distrito).ToList();
-                }              
-            ViewBag.s = sucursal;
-           
+
+            
             return View();
         
         }
