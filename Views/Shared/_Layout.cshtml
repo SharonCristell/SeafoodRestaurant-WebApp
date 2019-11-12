@@ -109,8 +109,9 @@ input[type="password"]:focus {
                                 <li class="nav-item dropdown">
                             <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user"></span> 
-                                <strong></strong>
+                                <strong>Opciones</strong>
                                 <span class="glyphicon glyphicon-chevron-down"></span>
+                                
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -120,40 +121,44 @@ input[type="password"]:focus {
                                                 <p class="text-center">
                                                     <a  class="btn btn-light btn-block" asp-controller="Categorias" asp-action="registro"><strong>Cambiar Contraseña</strong></a>
                                                 </p>
+                                                
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Productos" asp-action="registro" class="btn btn-primary btn-block btn-sm"><strong>Historial de Pedidos</strong></a>
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="crearrol"><strong>Crear rol</strong></a>
                                                 </p>
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="crearrol" class="btn btn-primary btn-block btn-sm"><strong>Crear rol</strong></a>
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="asociarrol"><strong>Asociar Rol</strong></a>
+                                                </p>
+                                                 <p class="text-center">
+                                                    <a class="btn btn-light btn-block" asp-controller="Categorias" asp-action="registro"><strong>Registrar Categorías</strong></a>
+                                                
                                                 </p>
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="asociarrol" class="btn btn-primary btn-block btn-sm"><strong>Asociar Rol</strong></a>
+                                                    <a class="btn btn-light btn-block" asp-controller="Productos" asp-action="registro"><strong>Registrar Productos</strong></a>
+                                                
                                                 </p>
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="logout" class="btn btn-primary btn-block btn-sm"><strong>Registrar Sucursal</strong></a>
+                                                    <a class="btn btn-light btn-block" asp-controller="Sucursal" asp-action="registro"><strong>Registrar Sucursales</strong></a>
+                                                
                                                 </p>
-
+                                                
+                                                <div class="navbar-login navbar-login-session">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <p class="text-center">
+                                                                <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="divider"></li>
-                                <li>
-                                    <div class="navbar-login navbar-login-session">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <p class="text-center">
-                                                    <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-danger btn-block">Cerrar Sesion</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                
                             </ul>
                         </li>
                             
-                                
-
                             }
                             else{
                                 <ul class="nav navbar-nav navbar-right">
@@ -172,14 +177,12 @@ input[type="password"]:focus {
                                                     <a  class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="CambiarContrasena"><strong>Cambiar Contraseña</strong></a>
                                                 </p>
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="HistorialUsuario" class="btn btn-primary btn-block btn-sm"><strong>Historial de Pedidos</strong></a>
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="HistorialUsuario"><strong>Historial de Consumo</strong></a>
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
+
                                     <div class="navbar-login navbar-login-session">
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -190,6 +193,7 @@ input[type="password"]:focus {
                                         </div>
                                     </div>
                                 </li>
+                                
                             </ul>
                         </li>
                     </ul>

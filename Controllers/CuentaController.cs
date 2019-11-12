@@ -112,7 +112,7 @@ namespace ProyectoPM.Controllers
             return RedirectToAction("index","home");
         }
 
-        public IActionResult HistorialUsario()
+        public IActionResult HistorialUsuario()
         {
           var user = _um.FindByNameAsync(User.Identity.Name).Result;
           var reservas = _context.Reservas.Where(x=> x.Nombre==User.Identity.Name).ToList();           

@@ -18,23 +18,24 @@ namespace ProyectoPM.Controllers
         }
         public IActionResult Index()
         {
-            return View();
-        }
-
-        
-
-        public IActionResult Reserva(string distrito)
-        {
-
             
-            return View();
-        
+            var lista = _context.Sucursales.ToList();
+            return View(lista);
+        }
+        public IActionResult Reserva()
+        {
+          var lista = _context.Sucursales.ToList();
+            return View(lista);
+            
+           
         }
 
         public IActionResult Galeria()
         {
             return View();
         }
+        
+        
 
         public IActionResult Ubicanos()
         {
