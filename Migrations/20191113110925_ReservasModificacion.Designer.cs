@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoPM.Models;
 
 namespace ProyectoPM.Migrations
 {
     [DbContext(typeof(RestauranteContext))]
-    partial class RestauranteContextModelSnapshot : ModelSnapshot
+    [Migration("20191113110925_ReservasModificacion")]
+    partial class ReservasModificacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -372,7 +374,7 @@ namespace ProyectoPM.Migrations
             modelBuilder.Entity("ProyectoPM.Models.Reserva", b =>
                 {
                     b.HasOne("ProyectoPM.Models.Sucursal", "Sucursal")
-                        .WithMany("Reservas")
+                        .WithMany()
                         .HasForeignKey("SucursalId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

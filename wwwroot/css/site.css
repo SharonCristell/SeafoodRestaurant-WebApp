@@ -89,13 +89,13 @@ body {
 
 
 /*      Mascota/Detalles      */
-.contenedordetallesMascota{
+.contenedordetalles{
   background-color: rgb(245, 245, 245);
   border: solid 3px black;
   margin: 15px auto 0 auto;
 }
 
-.datosMascota{
+.datos{
   background-color: rgba(245, 238, 238, 0.5);
   margin-left: 20px;
   padding: 20px;

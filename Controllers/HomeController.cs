@@ -19,8 +19,7 @@ namespace ProyectoPM.Controllers
         public IActionResult Index()
         {
             
-            var lista = _context.Sucursales.ToList();
-            return View(lista);
+            return View();
         }
         public IActionResult Reserva()
         {

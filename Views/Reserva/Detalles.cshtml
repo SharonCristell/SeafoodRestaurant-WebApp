@@ -1,0 +1,58 @@
+@{
+var sucursal = (List<Sucursal>)ViewBag.se;
+    ViewData["Title"] ="CrustaceoCascaduro-"+ sucursal[0].Nombre;
+
+}
+    @if (User.Identity.IsAuthenticated) {
+
+        @model List<Sucursal>
+            <div class="container">
+                <div class="contenedordetalles">
+                    @foreach (var s in sucursal) {
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="text-center">
+                                <h2>@s.Nombre</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div style="text-align: center">
+                                <img src="~/imagenes/@s.Foto" alt="Responsive image" width=240px height=360px>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="datos">
+                                <strong>Dirección:</strong>
+                                <p>@s.Direccion</p>
+                                <strong>Teléfono:</strong>
+                                <p>@s.Telefono</p>
+                                <strong>Correo Electrónico:</strong>
+                                <p>@s.Correo</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="mt-3 text-center">
+                                <form action="~/Reservas/Registro" method="get">
+                                    <input type="hidden" name="id" value="@s.Id">
+                                    <button type="submit" class="btn btn-dark">Reservar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        }else{
+        <h1>NO ESTA AUTORIZADO PARA VISUALIZAR ESTA PAGINA</h1>
+        <div class="container">
+            <img src="~/imagenes/error.png" alt="">
+        </div>
+
+
+        }

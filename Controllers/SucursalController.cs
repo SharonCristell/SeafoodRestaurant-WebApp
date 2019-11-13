@@ -20,11 +20,14 @@ namespace ProyectoPM.Controllers
 
         public IActionResult Index()
         {
-            
-            return View();
+            var lista = _context.Sucursales.ToList();
+            return View(lista);
+           
         }
         public IActionResult Registro()
+
         {
+            ViewBag.Distritos = _context.Distritos.ToList();
             return View();
         }
 
@@ -36,23 +39,9 @@ namespace ProyectoPM.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Distritos = _context.Distritos.ToList();
             return View(s);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

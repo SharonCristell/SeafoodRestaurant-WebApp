@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "Home Page";
+    var sucursal = (List<Sucursal>)ViewBag.s;
+    var distrito = (List<Distrito>)ViewBag.d; 
+}
+@model List<Sucursal>
+
+<div class="container">   
+        <form asp-action="~/Reservas/Index" method ="GET">
+                <div class = "row">
+                        
+                    <div class="form-group col-sm-2.4 mr-4">
+                                <label>Busca tu lugar preferido:</label>
+                                <select name="tipo" id="" class="form-control" style="width: 200px;">
+                                        <option value="0">--Seleccionar--</option>
+                                        @foreach (var d in distrito)
+                                        {
+                                        <option value="@d.Id">@d.Nombre</option>
+                                        }
+                                </select>
+                        </div> 
+                        <div class="col-sm-2.4">
+                                <div style="text-align: center; padding: 15px">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Filtrar</button>
+                                </div>
+                        </div>    
+                </div>    
+        </form>
+</div>
+  
+
+<div class="container">
+        <div class="row">
+                <div class="col-sm">
+                        <div class="text-center">
+                                <h2>Nuestros restaurantes</h2>
+                        </div>
+                </div>
+        </div>
+        @if(sucursal.Count==0){
+                <h2 style="color: red" class="text-center">No se encontraron resultados</h2>
+        }else{
+                <div class="fondoIndex">
+                        <div class="row">
+                                @foreach (var s in sucursal)
+                                {
+                                        <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-3">
+                                                <div class="sucursal">
+                                                        <h2 style="color: green" class="text-center">No se encontraron resultados</h2>
+                                                </div>
+                                        </div>
+                                }
+                        </div>
+                </div>
+        }
+</div>
+
+
+

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoPM.Models
@@ -15,10 +16,10 @@ namespace ProyectoPM.Models
         [Required]
         [Display(Name="Direccion")]
         public string Direccion{get;set;}
-
+         
         [Required]
-        [Display(Name="Distrito")]
-        public string Distrito{get;set;}
+        [Display(Name="Foto")]
+        public string Foto { get; set; }
 
         [Required]
         [Display(Name="Telefono")]
@@ -33,9 +34,10 @@ namespace ProyectoPM.Models
         [Display(Name="DireccionMaps")]
         public string DireccionMaps{get;set;}
 
-        
-       
+        public Distrito Distrito { get; set; }
+        public int DistritoId { get; set; }
 
-
+        public List<Reserva> Reservas { get; set; }   
+      
     }
 }

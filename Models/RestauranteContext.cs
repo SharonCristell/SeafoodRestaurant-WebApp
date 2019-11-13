@@ -12,7 +12,9 @@ namespace ProyectoPM.Models
 
         public DbSet<Reserva> Reservas {get; set;}
 
-         public DbSet<Sucursal> Sucursales { get; set; }  
+         public DbSet<Sucursal> Sucursales { get; set; } 
+
+         public DbSet<Distrito> Distritos { get; set; }   
         public RestauranteContext(DbContextOptions<RestauranteContext> o) : base(o){
 
         } 
