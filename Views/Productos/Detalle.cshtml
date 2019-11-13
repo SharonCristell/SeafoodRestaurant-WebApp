@@ -1,0 +1,51 @@
+@{
+    var producto = (List<Producto>)ViewBag.pE;
+    ViewData["Title"] = "Producto - "+producto[0];
+}
+
+@model List<Producto>
+
+<div class="container">
+    <div class="contenedorDeProductoDetalle">
+        @foreach (var p in producto)
+        {
+            <div class="row">
+                <div class="col-sm">
+                    <div class="text-center">
+                        <h2>@p.Nombre</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div style="text-align: center;">
+                        <img src="@p.Foto" alt="Responsive image" width="360" height="340">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="datosProducto">
+                        <strong>Descripción:</strong>
+                        <p>@p.DescripcionCorta</p>
+                        <strong>Ingredientes:</strong>
+                        <p>@p.DescripcionLarga</p>
+                        <strong>Precio Unitario:</strong>
+                        <p>@p.Precio</p>
+                        <strong>Cantidad:</strong>
+                        <select name="cantidad" id="" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
