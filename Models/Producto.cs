@@ -14,6 +14,7 @@ namespace ProyectoPM.Models
         public DateTime Fecha { get; set; }
         public Categoria Categoria { get; set; }
         public int CategoriaId { get; set; }
+        public int Precio { get; set; }
         public Producto() {
             Fecha = DateTime.Now;
         }
