@@ -84,9 +84,6 @@ input[type="password"]:focus {
                             <a class="nav-link text-dark" asp-area="" asp-controller="Categorias" asp-action="Index">La Carta</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cuenta" asp-action="PedidoProducto">Compras</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Reserva" asp-action="Index">Reservas</a>
                         </li>       
                         <li class="nav-item">
@@ -178,6 +175,9 @@ input[type="password"]:focus {
                                             <div class="col-lg-12">
                                                 <p class="text-center">
                                                     <a  class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="CambiarContrasena"><strong>Cambiar Contraseña</strong></a>
+                                                </p>
+                                                <p class="text-center">
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="PedidoProducto"><strong>Compras</strong></a>
                                                 </p>
                                                 <p class="text-center">
                                                     <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="HistorialUsuario"><strong>Historial de Consumo</strong></a>
