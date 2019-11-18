@@ -115,7 +115,7 @@ namespace ProyectoPM.Controllers
         public IActionResult HistorialUsuario()
         {
           var user = _um.FindByNameAsync(User.Identity.Name).Result;
-          var reservas = _context.Reservas.Where(x=> x.Nombre==User.Identity.Name).ToList();           
+          var reservas = _context.Reservas.Where(x=> x.UserName==User.Identity.Name).ToList();           
           ViewBag.r = reservas;
           ViewBag.usuario = user.UserName;
           return View();
