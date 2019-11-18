@@ -9,9 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="pomelo.EntityFrameworkCore.mysql" Version="2.2.6" />
-    <PackageReference Include="twilio" Version="5.35.1" />
-    <PackageReference Include="Twilio.AspNet.Mvc" Version="5.33.1" />
+    <PackageReference Include="pomelo.EntityFrameworkCore.mysql" Version="2.2.0" />
   </ItemGroup>
 
 </Project>
