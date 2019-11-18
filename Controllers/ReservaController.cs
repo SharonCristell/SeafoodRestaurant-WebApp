@@ -66,19 +66,19 @@ namespace ProyectoPM.Controllers
             var sucursal = _context.Sucursales.Where(x=>x.Id==id).ToList();
             var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
             
-            if(ModelState.IsValid){                               
+                                  
                     
                     r.UserName=user.UserName;
+                    r.Sucursal=null;
+
                     _context.Add(r);
                     _context.SaveChanges();                   
                    
                     return RedirectToAction("Index", "Reserva");
                 
                  
-            }
-            ViewBag.sucNom=sucursal;  
-            ViewBag.Id= sucursale;  
-            return View(); 
+            
+           
         }
 
         public IActionResult MisReservas()
