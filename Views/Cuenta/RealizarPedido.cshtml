@@ -1,0 +1,71 @@
+@{
+    ViewData["title"] = "Realizar Pedido";
+    var producto = (List<Producto>)ViewBag.precio;
+    var categoria = (List<Categoria>)ViewBag.categoria;
+    var idProduct = ViewBag.idProduct;
+    var cantidad = ViewBag.cantidad;
+}
+
+@model Compras
+
+@if (Context.User.Identity.IsAuthenticated) {
+    <h1 style="text-align: center;">Realizar Pedido</h1>
+    <form asp-action="RealizarPedido" meothod="post">
+        <div asp-validation-summary="All"></div>
+        <div class="form-group">
+            <label>Nombres:</label>
+            <input asp-for="Nombres">
+        </div>
+        <div class="form-group">
+            <label>Apellidos:</label>
+            <input asp-for="Apellidos">
+        </div>
+        <div class="form-group">
+            <label>DNI:</label>
+            <input asp-for="DNI">
+        </div>
+        <div class="form-group">
+            <label>Dirección:</label>
+            <input asp-for="Direccion">
+        </div>
+        <div class="form-group">
+            <label>Teléfono:</label>
+            <input asp-for="Telefono">
+        </div>
+        <div class="form-group">
+            <label>Número de cuenta:</label>
+            <input asp-for="NumeroCuenta">
+        </div>
+        <div class="form-group">
+            <label>Nombre del producto:</label>
+            @foreach(var p in producto){
+                @p.Nombre
+            }
+        </div>
+        <div class="form-group">
+            <label>Precio Unitario:</label>
+            @foreach(var p in producto){
+                @p.Precio
+            }
+        </div>
+        <div class="form-group">
+            <label>Nombre del producto:</label>
+            @cantidad
+        </div>
+        <div class="form-group">
+            <label>Categoria:</label>
+            @foreach(var c in categoria){
+                @c.Nombre
+            }
+        </div>
+        <input type="hidden" name="idProduct" value="@idProduct">
+        <div class="form-group">
+            <button style="background-color: green" class="btn btn-primary btn-lg btn-block" type="submit">Confirmar Pedido</button>
+        </div>
+    </form>
+} else{
+    <h1>NO ESTA AUTORIZADO PARA VISUALIZAR ESTA PAGINA</h1>
+    <div class="container">
+        <img src="~/imagenes/error.png" alt="" >
+    </div>
+}

@@ -38,7 +38,7 @@
                     <div class="mt-3 text-center">
                         <form action="~/Cuenta/RealizarPedido" method="get">
                             <strong>Cantidad:</strong>
-                            <select name="cantidad" id="" class="form-control">
+                            <select name="cantidad" id="cantidad" class="">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -50,8 +50,8 @@
                                 <option value="9">9</option>
                                 <option value="10">10</option>  
                             </select>
-                            <input type="hidden" name="idProducto" value="@p.Id">
-                            <button type="submit" class="btn btn-dark"></button>
+                            <input type="hidden" name="idProduct" value="@p.Id">
+                            <button type="submit" class="btn btn-dark">Comprar</button>
                         </form>
                     </div>
                 </div>

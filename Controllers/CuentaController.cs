@@ -1,4 +1,5 @@
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoPM.Models;
@@ -122,11 +123,39 @@ namespace ProyectoPM.Controllers
         }
         
         public IActionResult RealizarPedido(int idProduct, int cantidad){
-            var user = _um;
+            var user = _um.FindByNameAsync(User.Identity.Name).Result;
+            var producto = _context.Productos.FirstOrDefault(x => x.Id==idProduct);
+            var categoria = _context.Categorias.Where(x => x.Id==producto.CategoriaId);
+
+            ViewBag.precio = producto;
+            ViewBag.categoria = categoria;
+            ViewBag.idProduct = idProduct;
+            ViewBag.cantidad = cantidad;
+
             return View();
         }
         [HttpPost]
-        public IActionResult RealizarPedido(){
+        public IActionResult RealizarPedido(int idProduct, int cantidad, Compras compras){
+            var user = _um.FindByIdAsync(User.Identity.Name).Result;
+            var producto = _context.Productos.FirstOrDefault(x => x.Id==idProduct);
+            var categoria = _context.Categorias.Where(x => x.Id==producto.CategoriaId);
+            if (ModelState.IsValid)
+            {
+                compras.IdCliente = user.Id;
+                compras.IdProduct = producto.Id;
+                compras.Cantidad = cantidad;
+                compras.TotalMonto = cantidad * producto.Precio;
+                _context.Add(compras);
+                _context.SaveChanges();
+                HttpContext.Session.SetString("valida", "Adopcion tramitada con exito");
+                return RedirectToAction("Index", "Home");
+            } 
+
+            ViewBag.Precio = producto;
+            ViewBag.categoria = categoria;
+            ViewBag.idProduct = idProduct;
+            ViewBag.cantidad = cantidad;
+
             return View();
         }
     }

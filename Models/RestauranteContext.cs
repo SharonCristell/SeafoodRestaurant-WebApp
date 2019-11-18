@@ -17,6 +17,7 @@ namespace ProyectoPM.Models
         public DbSet<Distrito> Distritos { get; set; }   
         public DbSet<Pedido> Pedidos { get; set; }   
         public DbSet<PedidoProducto> PedidosProductos { get; set; }
+        public DbSet<Compras> Compras { get; set;}
         public RestauranteContext(DbContextOptions<RestauranteContext> o) : base(o){
 
         } 
