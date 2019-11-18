@@ -1,4 +1,7 @@
+using System.IO;
 using System.Linq;
+
+
 using Microsoft.AspNetCore.Mvc;
 using ProyectoPM.Models;
 
@@ -25,6 +28,8 @@ namespace ProyectoPM.Controllers
         public IActionResult Registro(Producto x)
         {
             if (ModelState.IsValid) {
+
+                
                 _context.Add(x);
                 _context.SaveChanges();
                 return RedirectToAction("Index");

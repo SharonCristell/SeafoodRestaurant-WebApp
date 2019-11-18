@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProyectoPM.Models;
 
 namespace ProyectoPM.Controllers
@@ -92,7 +93,16 @@ namespace ProyectoPM.Controllers
           return View();
         }
 
+        public IActionResult Reservas()
+        {      
+          var usuarios = _context.Usuarios.ToList();
+          var reservas = _context.Reservas.Include(res => res.Sucursal).ToList();           
+          
+          ViewBag.r = reservas;
+          ViewBag.u = usuarios; 
 
+          return View();
+        }
 
     }
 }
