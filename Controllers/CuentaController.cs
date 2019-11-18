@@ -123,11 +123,13 @@ namespace ProyectoPM.Controllers
 
         public IActionResult PedidoProducto()
         {
-            var pedidos =  _context.Pedidos.ToList();
+            var user = _um.FindByNameAsync(User.Identity.Name).Result;
+            var pedidos =  _context.Pedidos.Where(x=> x.UserName==User.Identity.Name).ToList();
             var productos = _context.Productos.ToList();
             
             ViewBag.p = productos;
             ViewBag.ped = pedidos;
+            ViewBag.usuario = user.UserName;
             return View();
         }
         
