@@ -7,8 +7,6 @@ namespace ProyectoPM.Models
         [Key]
         public int IdCompra { get; set; }
         public string UserName{ get; set; }
-        public Producto Producto { get; set; }
-        public int IdProduct { get; set; }
         public int Cantidad { get; set; }
         public double TotalMonto { get; set; }
         [Required]
@@ -23,5 +21,7 @@ namespace ProyectoPM.Models
         public string Telefono { get; set; }
         [Required]
         public string NumeroCuenta { get; set; }
+        public Producto Producto { get; set; }
+        public int ProductoId { get; set; }
     }
 }
