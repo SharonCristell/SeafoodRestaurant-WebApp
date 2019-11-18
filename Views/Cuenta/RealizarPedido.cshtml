@@ -1,16 +1,16 @@
 @{
     ViewData["title"] = "Realizar Pedido";
-    var producto = (List<Producto>)ViewBag.precio;
-    var categoria = (List<Categoria>)ViewBag.categoria;
-    var idProduct = ViewBag.idProduct;
+    var producto = ViewBag.Id;
+    var productos = (List<Producto>)ViewBag.productos;
+    //var categoria = (List<Categoria>)ViewBag.categoria;
     var cantidad = ViewBag.cantidad;
 }
 
 @model Compras
 
-@if (Context.User.Identity.IsAuthenticated) {
+@if (User.Identity.IsAuthenticated) {
     <h1 style="text-align: center;">Realizar Pedido</h1>
-    <form asp-action="RealizarPedido" meothod="post">
+    <form asp-action="RealizarPedido" method="post">
         <div asp-validation-summary="All"></div>
         <div class="form-group">
             <label>Nombres:</label>
@@ -38,27 +38,29 @@
         </div>
         <div class="form-group">
             <label>Nombre del producto:</label>
-            @foreach(var p in producto){
+            @foreach(var p in productos){
                 @p.Nombre
             }
         </div>
         <div class="form-group">
             <label>Precio Unitario:</label>
-            @foreach(var p in producto){
+            @foreach(var p in productos){
                 @p.Precio
             }
         </div>
         <div class="form-group">
-            <label>Nombre del producto:</label>
+            <label>Cantidad:</label>
             @cantidad
         </div>
         <div class="form-group">
-            <label>Categoria:</label>
-            @foreach(var c in categoria){
-                @c.Nombre
-            }
+            <label asp-for="Producto"></label>
+            <select asp-for="IdProduct" class="form-control">
+                @foreach (var item in productos)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
         </div>
-        <input type="hidden" name="idProduct" value="@idProduct">
         <div class="form-group">
             <button style="background-color: green" class="btn btn-primary btn-lg btn-block" type="submit">Confirmar Pedido</button>
         </div>

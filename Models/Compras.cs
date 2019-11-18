@@ -6,7 +6,8 @@ namespace ProyectoPM.Models
     {
         [Key]
         public int IdCompra { get; set; }
-        public string IdCliente { get; set; }
+        public string UserName{ get; set; }
+        public Producto Producto { get; set; }
         public int IdProduct { get; set; }
         public int Cantidad { get; set; }
         public double TotalMonto { get; set; }

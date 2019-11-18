@@ -125,10 +125,10 @@ namespace ProyectoPM.Controllers
 
         public IActionResult Pedidos(){
             var user = _um.FindByIdAsync(User.Identity.Name).Result;
-            var pedidos = _context.Compras.Where(x => x.IdCliente==user.Id).ToList();  
+            var pedidos = _context.Compras.Where(x => x.UserName==User.Identity.Name).ToList();  
             ViewBag.pedidos = pedidos;
             ViewBag.usuario = user.UserName;
-            return View();
+            return View();  
         }
 
         public IActionResult PedidoProducto()
@@ -145,19 +145,20 @@ namespace ProyectoPM.Controllers
         
         public IActionResult RealizarPedido(int idProduct, int cantidad){
             var user = _um.FindByNameAsync(User.Identity.Name).Result;
+            var productos = _context.Productos.Where(x => x.Id==idProduct).ToList();
             var producto = _context.Productos.FirstOrDefault(x => x.Id==idProduct);
-            var categoria = _context.Categorias.Where(x => x.Id==producto.CategoriaId);
+            //var categoria = _context.Categorias.Where(x => x.Id==producto.CategoriaId);
 
-            ViewBag.precio = producto;
-            ViewBag.categoria = categoria;
-            ViewBag.idProduct = idProduct;
+            ViewBag.productos = productos;
+            ViewBag.Id = producto;
+            //ViewBag.categoria = categoria;
             ViewBag.cantidad = cantidad;
 
             return View();
         }
         [HttpPost]
         public IActionResult RealizarPedido(int idProduct, int cantidad, Compras compras){
-            var user = _um.FindByIdAsync(User.Identity.Name).Result;
+            /*var user = _um.FindByIdAsync(User.Identity.Name).Result;
             var producto = _context.Productos.FirstOrDefault(x => x.Id==idProduct);
             var categoria = _context.Categorias.Where(x => x.Id==producto.CategoriaId);
             if (ModelState.IsValid)
@@ -177,7 +178,26 @@ namespace ProyectoPM.Controllers
             ViewBag.idProduct = idProduct;
             ViewBag.cantidad = cantidad;
 
-            return View();
+            return View();*/
+            var user = _um.FindByNameAsync(User.Identity.Name).Result;
+            var producto = _context.Productos.Where(x => x.Id==idProduct).ToList();
+            var productos = _context.Productos.FirstOrDefault(x=> x.Id==idProduct);
+            
+            if(ModelState.IsValid){                               
+                    compras.Cantidad = cantidad;
+                    compras.TotalMonto = (float) (cantidad * productos.Precio);
+                    compras.UserName=user.UserName;
+                    _context.Add(compras);
+                    _context.SaveChanges();                   
+                   
+                    return RedirectToAction("Index", "Reserva");
+                
+                 
+            }
+            ViewBag.productos = productos;
+            ViewBag.Id = producto;
+            ViewBag.cantidad = cantidad;
+            return View(); 
         }
     }
 }

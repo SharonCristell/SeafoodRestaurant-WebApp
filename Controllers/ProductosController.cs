@@ -32,5 +32,12 @@ namespace ProyectoPM.Controllers
             ViewBag.Categorias = _context.Categorias.ToList();
             return View(x);
         }
+        public IActionResult Detalle(int id)
+        {
+          var producto = _context.Productos.Where(x=>x.Id==id).ToList();
+          ViewBag.pE = producto;
+          
+          return View();
+        }
     }
 }
