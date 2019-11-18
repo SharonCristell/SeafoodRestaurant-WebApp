@@ -121,5 +121,13 @@ namespace ProyectoPM.Controllers
           return View();
         }
         
+        public IActionResult RealizarPedido(int idProduct, int cantidad){
+            var user = _um;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult RealizarPedido(){
+            return View();
+        }
     }
 }

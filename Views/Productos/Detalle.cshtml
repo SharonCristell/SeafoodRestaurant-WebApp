@@ -30,19 +30,29 @@
                         <p>@p.DescripcionLarga</p>
                         <strong>Precio Unitario:</strong>
                         <p>@p.Precio</p>
-                        <strong>Cantidad:</strong>
-                        <select name="cantidad" id="" class="form-control">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="mt-3 text-center">
+                        <form action="~/Cuenta/RealizarPedido" method="get">
+                            <strong>Cantidad:</strong>
+                            <select name="cantidad" id="" class="form-control">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>  
+                            </select>
+                            <input type="hidden" name="idProducto" value="@p.Id">
+                            <button type="submit" class="btn btn-dark"></button>
+                        </form>
                     </div>
                 </div>
             </div>
