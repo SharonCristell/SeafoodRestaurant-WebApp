@@ -1,9 +1,11 @@
 @{
     ViewData["Title"] = "Reservas";
-    var distrito = (List<Distrito>)ViewBag.dis;
+    
+    var sucNom=(List<Sucursal>) ViewBag.sucNom;
     var id = ViewBag.Id;
 }
 @model Reserva
+
 @if (User.Identity.IsAuthenticated) {
 
 <div class="container">
@@ -11,11 +13,35 @@
     <form asp-action="reservar" method="post">
         <div asp-validation-summary="All"></div>
         <div class="form-group">
-            <label>Nombre:</label>
+            <label>Nombres:</label>
             <input asp-for="Nombre">
-        </div>     
-               
-        <input type="hidden" name="id" value="@id">
+        </div> 
+        <div class="form-group">
+            <label>Apellidos:</label>
+            <input asp-for="Apellido">
+        </div>
+        <div class="form-group">
+            <label>Celular:</label>
+            <input asp-for="Celular">
+        </div> 
+        <div class="form-group">
+            <label>Email:</label>
+            <input asp-for="Email">
+        </div> 
+        <div class="form-group">
+            <label>Agregar información adicional:</label>
+            <textarea asp-for="Descripcion" rows="3" class="form-control"></textarea>
+        </div>  
+        <div class="form-group">
+        <label asp-for="Sucursal"></label>
+        <select asp-for="SucursalId" class="form-control">
+            @foreach (var item in sucNom)
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+        </div>
+        
         
         <div class="form-group">
             <button style="background-color: green" class="btn btn-primary btn-lg btn-block" type="submit">Completar Reserva</button>
