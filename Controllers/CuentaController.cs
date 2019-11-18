@@ -192,7 +192,7 @@ namespace ProyectoPM.Controllers
                     _context.Add(compras);
                     _context.SaveChanges();                   
                    
-                    return RedirectToAction("Index", "Reserva");
+                    return RedirectToAction("Index", "Categorias");
                 
                  
             }
