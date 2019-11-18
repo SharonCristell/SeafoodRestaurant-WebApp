@@ -1,0 +1,29 @@
+@model CambiarContraseñaViewModel
+
+@if (Context.User.Identity.IsAuthenticated) {
+
+<h1>Cambiar contraseña</h1>
+
+<form asp-action="CambiarContraseña" method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div class="form-group">
+        <label>Contraseña actual:</label> 
+        <input asp-for="ContrasenaActual">
+    </div>
+    <div class="form-group">
+        <label>Contraseña nueva:</label> 
+        <input asp-for="ContrasenaNueva">
+    </div>
+    <div class="form-group">
+        <label>Confirmar Contraseña:</label>
+        <input asp-for="ContrasenaConfirmacion">
+    </div>
+    <div class="form-group">
+            <button style="background-color: green" class="btn btn-primary btn-lg btn-block" type="submit">Cambiar Contraseña</button>
+    </div>
+</form>
+}
+else{
+        <h1>NO ESTA AUTORIZADO PARA VISUALIZAR ESTA PAGINA</h1>    
+}

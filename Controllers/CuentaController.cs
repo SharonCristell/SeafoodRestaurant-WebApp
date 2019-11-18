@@ -199,5 +199,31 @@ namespace ProyectoPM.Controllers
             ViewBag.cantidad = cantidad;
             return View(); 
         }
+
+        public IActionResult CambiarContraseña() {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CambiarContraseña(CambiarContraseñaViewModel vm) {
+            if (ModelState.IsValid) {
+                
+                var user = _um.FindByNameAsync(User.Identity.Name).Result;
+                var resultado = _um.ChangePasswordAsync(user, vm.ContrasenaActual, vm.ContrasenaNueva);
+
+                if (resultado.Result == IdentityResult.Success) {                    
+                    HttpContext.Session.SetString("valida","Su contraseña se Cambió con exito");
+                    return RedirectToAction("Index", "Home");
+                }
+                else {
+                    foreach (var error in resultado.Result.Errors) {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(vm);
+	}
+
+
     }
 }

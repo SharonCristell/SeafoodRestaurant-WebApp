@@ -35,7 +35,7 @@ namespace ProyectoPM
             });
             services.AddDbContext<RestauranteContext>(o=>o.UseMySql("Server=localhost;Database=RestauranteDB;User=root;Password=;"));
             services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<RestauranteContext>();
-
+            services.AddSession();
             //Configuracion para la contraseña menos fuerte
             services.Configure<IdentityOptions>(options => 
             {
@@ -72,7 +72,7 @@ namespace ProyectoPM
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseAuthentication();
 
             app.UseMvc(routes =>
