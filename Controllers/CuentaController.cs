@@ -115,7 +115,7 @@ namespace ProyectoPM.Controllers
         public IActionResult HistorialUsuario()
         {
           var user = _um.FindByNameAsync(User.Identity.Name).Result;
-          var reservas = _context.Reservas.Where(x=> x.Nombre==User.Identity.Name).ToList();           
+          var reservas = _context.Reservas.Where(x=> x.UserName==User.Identity.Name).ToList();           
           ViewBag.r = reservas;
           ViewBag.usuario = user.UserName;
           return View();
@@ -124,11 +124,12 @@ namespace ProyectoPM.Controllers
         public IActionResult PedidoProducto()
         {
             var user = _um.FindByNameAsync(User.Identity.Name).Result;
-            var pedidos =  _context.Pedidos.ToList();
-            var productos = _context.Productos.Where(x=> x.Nombre==User.Identity.Name).ToList();
+            var pedidos =  _context.Pedidos.Where(x=> x.UserName==User.Identity.Name).ToList();
+            var productos = _context.Productos.ToList();
             
             ViewBag.p = productos;
             ViewBag.ped = pedidos;
+            ViewBag.usuario = user.UserName;
             return View();
         }
         

@@ -8,6 +8,7 @@ namespace ProyectoPM.Models
     {
         public int Id { get; set; }
         [Required]
+        
         public string Nombre { get; set; }
         public string Foto { get; set; }
         public string DescripcionCorta { get; set; }
