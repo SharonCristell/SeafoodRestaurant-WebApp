@@ -45,9 +45,12 @@
                                 @foreach (var s in sucursal)
                                 {
                                         <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-3">
-                                                <div class="sucursal">
-                                                        <h2 style="color: green" class="text-center">No se encontraron resultados</h2>
-                                                </div>
+                                                 <a href="~/Reserva/detalles/@s.Id">
+                                                                <img src="~/imagenes/@s.Foto" width="150" height="180"><br><br>
+                                                                <p style="text-align: center">@s.Nombre</p>
+                                                </a>
+
+                                               
                                         </div>
                                 }
                         </div>

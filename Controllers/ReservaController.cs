@@ -1,3 +1,4 @@
+
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -49,10 +50,12 @@ namespace ProyectoPM.Controllers
         public IActionResult Reservar(int id)
         {
             var user = _um.FindByNameAsync(User.Identity.Name).Result;
-            var sucursal = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
-            var distrito = _context.Distritos.Where(x=>x.Id==sucursal.DistritoId).ToList();
-            ViewBag.dis= distrito; 
-            ViewBag.Id=id;    
+            var sucursal = _context.Sucursales.Where(x=>x.Id==id).ToList();
+            var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
+            
+             
+          ViewBag.Id= sucursale;
+          ViewBag.sucNom=sucursal;    
           return View();
         }
 
@@ -60,28 +63,28 @@ namespace ProyectoPM.Controllers
         public IActionResult Reservar(int id, Reserva r)
         {
             var user = _um.FindByNameAsync(User.Identity.Name).Result;
-            var sucursal = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
-            var distrito = _context.Distritos.Where(x=>x.Id==sucursal.DistritoId).ToList();
-            if(ModelState.IsValid){
-                               
+            var sucursal = _context.Sucursales.Where(x=>x.Id==id).ToList();
+            var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
+            
+            if(ModelState.IsValid){                               
                     
-                    r.Nombre=user.UserName;
+                    r.UserName=user.UserName;
                     _context.Add(r);
                     _context.SaveChanges();                   
-                    
-                    return RedirectToAction("Completado","Reservas");
+                   
+                    return RedirectToAction("Index", "Reserva");
                 
                  
             }
-
-            ViewBag.dis= distrito;         
+            ViewBag.sucNom=sucursal;  
+            ViewBag.Id= sucursale;  
             return View(); 
         }
 
         public IActionResult MisReservas()
         {
           var user = _um.FindByNameAsync(User.Identity.Name).Result;
-          var reservas = _context.Reservas.Where(x=> x.Nombre==User.Identity.Name).ToList();           
+          var reservas = _context.Reservas.Where(x=> x.UserName==User.Identity.Name).ToList();           
           
           ViewBag.r = reservas;
           
