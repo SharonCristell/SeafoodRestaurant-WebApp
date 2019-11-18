@@ -113,15 +113,30 @@ namespace ProyectoPM.Controllers
             return RedirectToAction("index","home");
         }
 
-        public IActionResult HistorialUsuario()
+        public IActionResult HistorialUsuario(){
+            return View();
+        }
+
+        public IActionResult HistorialReservas()
         {
           var user = _um.FindByNameAsync(User.Identity.Name).Result;
           var reservas = _context.Reservas.Where(x=> x.UserName==User.Identity.Name).ToList();
           
+          
           ViewBag.r = reservas;
           ViewBag.usuario = user.UserName;
+          
           return View();
         } 
+        public IActionResult HistorialPedidos(){
+            var user = _um.FindByNameAsync(User.Identity.Name).Result;
+            var pedidos = _context.Compras.Where(x => x.UserName==User.Identity.Name).ToList();
+
+            ViewBag.pedidos = pedidos;
+            ViewBag.usuario = user.UserName;
+
+            return View();
+        }
 
         public IActionResult Pedidos(){
             var user = _um.FindByIdAsync(User.Identity.Name).Result;
