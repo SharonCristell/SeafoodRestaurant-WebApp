@@ -185,7 +185,7 @@ namespace ProyectoPM.Controllers
             
             if(ModelState.IsValid){                               
                     compras.Cantidad = cantidad;
-                    compras.TotalMonto = producto.Precio;
+                    compras.TotalMonto = (double) (cantidad * producto.Precio);
                     compras.UserName = user.UserName;
                     compras.ProductoId = id;
                     compras.Producto = producto;
