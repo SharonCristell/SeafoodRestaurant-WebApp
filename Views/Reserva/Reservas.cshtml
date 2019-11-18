@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "Home Page";
+    var reserva = (List<Reserva>)ViewBag.r;
+}
+
+@model List<Reserva>
+
+    <div class="container">
+        <div class="row">
+                <div class="col-sm">
+                        <div class="text-center">
+                                <h1 style="color: green">Lista de Reservas</h1>
+                        </div>
+                </div>
+        </div>
+        <div class="fondoIndex">
+            <div class="row">
+                @if(reserva.Count==0){
+                    <div class="col-sm-12">
+                        <h2 style="color: red" class="text-center">No hay reservas registradas</h2>
+                    </div>
+                }
+                else{  
+                        <div class="col-sm-3"></div>
+
+                        <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-6">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Apellido</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Sucursal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(var m in reserva){
+                                            <tr>
+                                                <th scope="row">@m.Id</th>
+                                                <td>@m.Nombre</td>
+                                                <td>@m.Apellido</td>
+                                                <td>@m.Descripcion</td>
+                                                <td>
+                                                    @if(m.Sucursal != null){
+                                                        @m.Sucursal.Nombre
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                        </div>
+                    
+                }
+            </div>
+        </div>             
+    </div>
+
