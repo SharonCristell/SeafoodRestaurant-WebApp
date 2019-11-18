@@ -12,8 +12,6 @@ namespace ProyectoPM.Models
         [Required]
         public string Nombre { get; set; }
         public string Foto { get; set; }
-        [NotMapped]
-        public IFormFile  photofile { get; set; }
         public string DescripcionCorta { get; set; }
         public string DescripcionLarga { get; set; }
         public DateTime Fecha { get; set; }

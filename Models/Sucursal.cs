@@ -24,9 +24,6 @@ namespace ProyectoPM.Models
         [Display(Name="Foto")]
 
         public string Foto { get; set; }
-        [NotMapped]
-        
-        public IFormFile  photofile { get; set; }
 
         [Required]
         [Display(Name="Telefono")]

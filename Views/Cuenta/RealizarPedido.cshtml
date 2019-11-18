@@ -3,6 +3,7 @@
     var producto = ViewBag.Id;
     var productos = (List<Producto>)ViewBag.productos;
     var cantidad = ViewBag.cantidad;
+    var identificador = ViewBag.identificador;
 }
 
 @model Compras
@@ -34,22 +35,12 @@
         <div class="form-group">
             <label>Número de cuenta:</label>
             <input asp-for="NumeroCuenta">
-        </div>
-       
-        
+        </div> 
         <div class="form-group">
             <label>Cantidad:</label>
             @cantidad
         </div>
-        <div class="form-group">
-            <label asp-for="Producto"></label>
-            <select asp-for="ProductoId" class="form-control">
-                @foreach (var item in productos)
-                {
-                    <option value="@item.Id">@item.Nombre</option>
-                }
-            </select>
-        </div>
+        <input type="hidden" name="id" value="@identificador">
         <input type="hidden" name="cantidad" value="@cantidad">
         <div class="form-group">
             <button style="background-color: green" class="btn btn-primary btn-lg btn-block" type="submit">Confirmar Pedido</button>

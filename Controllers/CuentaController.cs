@@ -153,11 +153,11 @@ namespace ProyectoPM.Controllers
             ViewBag.Id = producto;
             //ViewBag.categoria = categoria;
             ViewBag.cantidad = cantidad;
-
+            ViewBag.Identificador = idProduct;
             return View();
         }
         [HttpPost]
-        public IActionResult RealizarPedido(int idProduct, int cantidad, Compras compras){
+        public IActionResult RealizarPedido(int id, int cantidad, Compras compras){
             /*var user = _um.FindByIdAsync(User.Identity.Name).Result;
             var producto = _context.Productos.FirstOrDefault(x => x.Id==idProduct);
             var categoria = _context.Categorias.Where(x => x.Id==producto.CategoriaId);
@@ -180,12 +180,12 @@ namespace ProyectoPM.Controllers
 
             return View();*/
             var user = _um.FindByNameAsync(User.Identity.Name).Result;
-            var producto = _context.Productos.Where(x => x.Id==idProduct).ToList();
-            var productos = _context.Productos.FirstOrDefault(x=> x.Id==idProduct);
+            var producto = _context.Productos.FirstOrDefault(x=> x.Id==id);
+            var productos = _context.Productos.Where(x => x.Id==id).ToList();
             
             if(ModelState.IsValid){                               
                     compras.Cantidad = cantidad;
-                    compras.TotalMonto = (float) (cantidad * productos.Precio);
+                    compras.TotalMonto = producto.Precio;
                     compras.UserName=user.UserName;
                     _context.Add(compras);
                     _context.SaveChanges();                   
