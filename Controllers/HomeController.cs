@@ -45,5 +45,13 @@ namespace ProyectoPM.Controllers
             return View();
         
         }
+
+        public IActionResult Detalles(int id)
+        {
+          var producto = _context.Productos.Where(x=>x.Id==id).ToList();
+          ViewBag.p = producto;
+          
+          return View();
+        }
     }
 }

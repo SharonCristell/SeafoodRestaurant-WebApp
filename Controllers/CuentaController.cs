@@ -120,6 +120,16 @@ namespace ProyectoPM.Controllers
           ViewBag.usuario = user.UserName;
           return View();
         }
+
+        public IActionResult PedidoProducto()
+        {
+            var pedidos =  _context.Pedidos.ToList();
+            var productos = _context.Productos.ToList();
+            
+            ViewBag.p = productos;
+            ViewBag.ped = pedidos;
+            return View();
+        }
         
     }
 }
