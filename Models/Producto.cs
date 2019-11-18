@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 
 namespace ProyectoPM.Models
 {
@@ -10,6 +12,8 @@ namespace ProyectoPM.Models
         [Required]
         public string Nombre { get; set; }
         public string Foto { get; set; }
+        [NotMapped]
+        public IFormFile  photofile { get; set; }
         public string DescripcionCorta { get; set; }
         public string DescripcionLarga { get; set; }
         public DateTime Fecha { get; set; }
