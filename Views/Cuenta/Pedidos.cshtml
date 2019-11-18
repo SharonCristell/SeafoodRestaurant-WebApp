@@ -1,15 +1,15 @@
 @{
-    ViewData["Title"] = "Home Page";
-    var reserva = (List<Reserva>)ViewBag.r;      
+    ViewData["Title"] = "Home Page"; 
+    var pedidos = (List<Compras>)ViewBag.pedidos;
 
 }
-@model List<Reserva>
+@model List<Compras>
 <div class="container">
     
         <div class="row">
                 <div class="col-sm">
                         <div class="text-center">
-                                <h1 style="color: green">Mis Reservas</h1>
+                                <h1 style="color: green">Mis Pedidos</h1>
                         </div>
                 </div>
         </div>
@@ -21,24 +21,24 @@
                                 <div class="row">
                                         <div class="col-sm">
                                                 <div class="text-center">
-                                                        <h1>Reservas efectuadas</h1>
+                                                        <h1>Pedidos efectuados</h1>
                                                 </div>
                                         </div>
                                 </div>
                                 <div class="fondoIndex">
                                         <div class="row">
-                                                @if(reserva.Count==0){
+                                                @if(pedidos.Count==0){
                                                         <div class="col-sm-12">
-                                                                <h2 style="color: red" class="text-center">No tiene reservas registradas</h2>
+                                                                <h2 style="color: red" class="text-center">Aún no tiene pedidos realizados</h2>
                                                         </div>
                                                 }else{  
-                                                @foreach (var r in reserva)
+                                                @foreach (var p in pedidos)
                                                 {
                                                         <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-6">
                                                                 <div class="reserva">
                                                                         
-                                                                                <p style="text-align: center">@r.Nombre</p>
-                                                                       
+                                                                                <p style="text-align: center">@p.IdProduct</p>
+                                                                                <p style="text-align: center">@p.Cantidad</p>
                                                                 </div>
                                                         </div>
                                                 }}

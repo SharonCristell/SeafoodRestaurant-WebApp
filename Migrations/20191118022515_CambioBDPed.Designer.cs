@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoPM.Models;
 
 namespace ProyectoPM.Migrations
 {
     [DbContext(typeof(RestauranteContext))]
-    partial class RestauranteContextModelSnapshot : ModelSnapshot
+    [Migration("20191118022515_CambioBDPed")]
+    partial class CambioBDPed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,42 +194,6 @@ namespace ProyectoPM.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("ProyectoPM.Models.Compras", b =>
-                {
-                    b.Property<int>("IdCompra")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Apellidos")
-                        .IsRequired();
-
-                    b.Property<int>("Cantidad");
-
-                    b.Property<string>("DNI")
-                        .IsRequired();
-
-                    b.Property<string>("Direccion")
-                        .IsRequired();
-
-                    b.Property<string>("IdCliente");
-
-                    b.Property<int>("IdProduct");
-
-                    b.Property<string>("Nombres")
-                        .IsRequired();
-
-                    b.Property<string>("NumeroCuenta")
-                        .IsRequired();
-
-                    b.Property<string>("Telefono")
-                        .IsRequired();
-
-                    b.Property<double>("TotalMonto");
-
-                    b.HasKey("IdCompra");
-
-                    b.ToTable("Compras");
-                });
-
             modelBuilder.Entity("ProyectoPM.Models.Distrito", b =>
                 {
                     b.Property<int>("Id")
@@ -251,8 +217,6 @@ namespace ProyectoPM.Migrations
                     b.Property<double>("MontoTotal");
 
                     b.Property<int>("ProductoId");
-
-                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -309,8 +273,6 @@ namespace ProyectoPM.Migrations
                         .IsRequired();
 
                     b.Property<int>("SucursalId");
-
-                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoPM.Models;
 
 namespace ProyectoPM.Migrations
 {
     [DbContext(typeof(RestauranteContext))]
-    partial class RestauranteContextModelSnapshot : ModelSnapshot
+    [Migration("20191118162232_y")]
+    partial class y
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

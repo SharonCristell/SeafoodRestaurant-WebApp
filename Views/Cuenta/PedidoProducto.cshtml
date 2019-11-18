@@ -1,0 +1,39 @@
+@{
+    var producto = (List<Producto>)ViewBag.p;
+    var pedido = (List<Pedido>)ViewBag.ped;
+}
+
+@model List<Producto>
+
+<div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="text-center">
+                    <h1>Pedidos</h1>
+                </div>
+            </div>
+        </div>
+        
+        @if(producto.Count==0)
+        {
+            <h2 style="color: red" class="text-center">No tiene pedidos registrados</h2>
+        }
+        else
+        {
+            <div class="BackgroundIndex$$">
+                <div class="row">  
+                    @foreach (var p in producto){
+                        <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-6">
+                            <div class="producto$$">
+                                <a href="~/productos/detalle/@p.Id">
+                                    <img src="@p.Foto" width="300" height="300">
+                                    <br>
+                                    <p style="text-align: center">@p.Nombre</p>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+</div>

@@ -116,10 +116,31 @@ namespace ProyectoPM.Controllers
         public IActionResult HistorialUsuario()
         {
           var user = _um.FindByNameAsync(User.Identity.Name).Result;
-          var reservas = _context.Reservas.Where(x=> x.UserName==User.Identity.Name).ToList();           
+          var reservas = _context.Reservas.Where(x=> x.UserName==User.Identity.Name).ToList();
+          
           ViewBag.r = reservas;
           ViewBag.usuario = user.UserName;
           return View();
+        } 
+
+        public IActionResult Pedidos(){
+            var user = _um.FindByIdAsync(User.Identity.Name).Result;
+            var pedidos = _context.Compras.Where(x => x.IdCliente==user.Id).ToList();  
+            ViewBag.pedidos = pedidos;
+            ViewBag.usuario = user.UserName;
+            return View();
+        }
+
+        public IActionResult PedidoProducto()
+        {
+            var user = _um.FindByNameAsync(User.Identity.Name).Result;
+            var pedidos =  _context.Pedidos.Where(x=> x.UserName==User.Identity.Name).ToList();
+            var productos = _context.Productos.ToList();
+            
+            ViewBag.p = productos;
+            ViewBag.ped = pedidos;
+            ViewBag.usuario = user.UserName;
+            return View();
         }
         
         public IActionResult RealizarPedido(int idProduct, int cantidad){
@@ -141,7 +162,7 @@ namespace ProyectoPM.Controllers
             var categoria = _context.Categorias.Where(x => x.Id==producto.CategoriaId);
             if (ModelState.IsValid)
             {
-                compras.IdCliente = user.Id;
+                compras.IdCliente= user.Id;
                 compras.IdProduct = producto.Id;
                 compras.Cantidad = cantidad;
                 compras.TotalMonto = cantidad * producto.Precio;
