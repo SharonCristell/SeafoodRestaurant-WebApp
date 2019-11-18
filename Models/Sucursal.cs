@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
+
 namespace ProyectoPM.Models
 {
     public class Sucursal
@@ -19,7 +22,11 @@ namespace ProyectoPM.Models
          
         [Required]
         [Display(Name="Foto")]
+
         public string Foto { get; set; }
+        [NotMapped]
+        
+        public IFormFile  photofile { get; set; }
 
         [Required]
         [Display(Name="Telefono")]
