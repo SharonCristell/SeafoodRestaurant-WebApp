@@ -24,14 +24,17 @@ namespace ProyectoPM.Models
         [EmailAddress]
         [Display(Name="Email")]
         public string Email{get;set;}
-
+        [Required]
+        public int Mesa { get; set; }
+        [Required]
+        public DataType Fecha { get; set; }
+        [Required]
+        public int Horario { get; set; }
         [Required]
         [Display(Name="Descripcion")]
         public string Descripcion{get;set;}
 
         public Sucursal Sucursal { get; set; }
         public int SucursalId { get; set; }
-
-
     }
 }

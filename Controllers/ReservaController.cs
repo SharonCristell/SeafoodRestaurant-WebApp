@@ -50,13 +50,14 @@ namespace ProyectoPM.Controllers
 
         public IActionResult Reservar(int id)
         {
-            var user = _um.FindByNameAsync(User.Identity.Name).Result;
-            var sucursal = _context.Sucursales.Where(x=>x.Id==id).ToList();
-            var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
+          var user = _um.FindByNameAsync(User.Identity.Name).Result;
+          var sucursal = _context.Sucursales.Where(x=>x.Id==id).ToList();
+          var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
+          
             
-             
           ViewBag.Id= sucursale;
-          ViewBag.sucNom=sucursal;    
+          ViewBag.sucNom=sucursal;  
+          ViewBag.Nmesa = sucursale.N_Mesas;
           return View();
         }
 

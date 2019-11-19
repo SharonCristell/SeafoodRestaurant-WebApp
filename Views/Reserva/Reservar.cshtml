@@ -3,6 +3,7 @@
     
     var sucNom=(List<Sucursal>) ViewBag.sucNom;
     var id = ViewBag.Id;
+    var mesas = ViewBag.Nmesa;
 }
 @model Reserva
 
@@ -32,6 +33,27 @@
             <label>Agregar información adicional:</label>
             <textarea asp-for="Descripcion" rows="3" class="form-control"></textarea>
         </div>  
+        <div class="form-group">
+            <label>Seleccione una mesa disponible:</label>
+            <select name="Mesa" id="" class="form-control" style="width:100px;"> 
+                @for (int i = 1; i <= mesas; i++)
+                {
+                    <option value="@i">Mesa @i</option>
+                }
+            </select>
+        <div class="form-group">
+            <label>Fecha de reserva:</label>
+            <input asp-for="Fecha">
+        </div>
+        <div class="form-group">
+            <label>Seleccione un horario:</label>
+            <select name="Horario" id="" class="form-control" style="width:300px">
+                <option value="1">9am - 11am</option>
+                <option value="2">11am - 1pm</option>
+                <option value="3">1pm - 3pm</option>
+                <option value="4">3pm - 5pm</option>
+            </select>
+        </div>
         <div class="form-group">
         <label asp-for="Sucursal"></label>
         <select asp-for="SucursalId" class="form-control">
