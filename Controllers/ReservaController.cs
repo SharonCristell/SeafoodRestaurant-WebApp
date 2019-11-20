@@ -68,49 +68,27 @@ namespace ProyectoPM.Controllers
           var sucursal = _context.Sucursales.Where(x=>x.Id==SucursalId).ToList();
           var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==SucursalId);
           var registroReservas = _context.Reservas.Where(x => x.SucursalId==SucursalId && x.Fecha==fecha && x.Mesa==mesa && x.Horario==horario).ToList();
-          //var reserva = _context.Reservas.Include(res => res.Sucursal).Where(x=> x.SucursalId==SucursalId && r.Fecha==fecha && x.Mesa==mesa && x.Horario==horario).ToList();
-
+        
+          ViewBag.Nmesa = sucursale.N_Mesas;
+          ViewBag.sucNom=sucursal;  
+          ViewBag.Nmesa = sucursale.N_Mesas;
+          ViewBag.IdentificadorSucursal = SucursalId;
           if (ModelState.IsValid)
           {
              if(registroReservas.Count==0){
                   r.Id = 0;
-                  r.Fecha = fecha;
-                  r.Mesa = mesa;
-                  r.Horario = horario;
                   r.UserName = user.UserName;
-                  r.SucursalId = SucursalId;
-                  r.Sucursal = sucursale;
-
                   _context.Add(r);
                   _context.SaveChanges(); 
                   return RedirectToAction("index", "home");
               }
               else{
-                return View();
+                TempData["ocupado"] = "Mesa ya ocupada en ese horario";
+                TempData["TipoTexto"] = "text-danger";
               }
-            /*
-            foreach (var item in registroReservas)
-            {
-                if (item.SucursalId==id && item.Fecha==fecha && item.Mesa==mesa &&item.Horario==horario)
-                {
-                    return View();
-                } else {
-                  r.Fecha = fecha;
-                  r.Mesa = mesa;
-                  r.Horario = horario;
-                  r.UserName = user.UserName;
-                  r.SucursalId = id;
-                  r.Sucursal = sucursale;
-
-                  _context.Add(r);
-                  _context.SaveChanges(); 
-
-                  return RedirectToAction("Index", "Reserva");
-                }
-            }*/
-          }                   
-
-          return View();
+              
+          }   
+          return View();              
         }
 
         public IActionResult MisReservas()
