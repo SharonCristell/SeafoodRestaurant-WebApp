@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,101 +11,113 @@
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+            asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-fallback-test-class="sr-only"
+            asp-fallback-test-property="position" asp-fallback-test-value="absolute" crossorigin="anonymous"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
- <style>
+    <style>
         input[type="text"] {
-        width: 100%;
-        border: 2px solid #0000FF;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: 0.3s;
-}
-input[type="email"] {
-        width: 100%;
-        border: 2px solid #0000FF;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: 0.3s;
-}
-input[type="password"] {
-        width: 100%;
-        border: 2px solid #0000FF;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: 0.3s;
-}
+            width: 100%;
+            border: 2px solid #0000FF;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            border: 2px solid #0000FF;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            border: 2px solid #0000FF;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
         input[type="text"]:focus {
-        border-color: dodgerBlue;
-        box-shadow: 0 0 8px 0 dodgerBlue;
-}
-input[type="email"]:focus {
-        border-color: dodgerBlue;
-        box-shadow: 0 0 8px 0 dodgerBlue;
-}
-input[type="password"]:focus {
-        border-color: dodgerBlue;
-        box-shadow: 0 0 8px 0 dodgerBlue;
-}
+            border-color: dodgerBlue;
+            box-shadow: 0 0 8px 0 dodgerBlue;
+        }
+
+        input[type="email"]:focus {
+            border-color: dodgerBlue;
+            box-shadow: 0 0 8px 0 dodgerBlue;
+        }
+
+        input[type="password"]:focus {
+            border-color: dodgerBlue;
+            box-shadow: 0 0 8px 0 dodgerBlue;
+        }
     </style>
 
 
 
 
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                  <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img class="img-fluid" src="~/imagenes/logo.jpg" alt="" width="100px">
                 </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categorias" asp-action="Index">La Carta</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categorias" asp-action="Index">La
+                                Carta</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reserva" asp-action="Index">Reservas</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reserva"
+                                asp-action="Index">Reservas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Ubicanos">Ubícanos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Galeria">Galería</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Ubicanos">Ubícanos</a>
                         </li>
 
                         @if(!User.Identity.IsAuthenticated){
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="~/cuenta/crear">Crear Cuenta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="~/cuenta/login">Iniciar Sesión</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="~/cuenta/crear">Crear Cuenta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="~/cuenta/login">Iniciar Sesión</a>
+                        </li>
                         }
                         else{
-                            //if--->vista administrador
-                            @if (User.IsInRole("Administrador")){
-<<<<<<< HEAD
-                        
+                        //if--->vista administrador
+                        @if (User.IsInRole("Administrador")){
+
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user"></span> 
                                 <strong>Opciones de administración</strong>
                                 <span class="glyphicon glyphicon-chevron-down"></span>
@@ -114,29 +127,33 @@ input[type="password"]:focus {
                                     <div class="navbar-login">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                
-                                                
+
+
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="crearrol"><strong>Crear rol</strong></a>
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta"
+                                                        asp-action="crearrol"><strong>Crear rol</strong></a>
                                                 </p>
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="asociarrol"><strong>Asociar Rol</strong></a>
+                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta"
+                                                        asp-action="asociarrol"><strong>Asociar Rol</strong></a>
                                                 </p>
-                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Reserva" asp-action="Reservas"><strong>Ver Informe</strong></a>
+                                                <p class="text-center">
+                                                    <a class="btn btn-light btn-block" asp-controller="Reserva"
+                                                        asp-action="Reservas"><strong>Ver Informe</strong></a>
                                                 </p>
-                                                
-                                                
+
+
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="divider"></li>
-                                
+
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user"></span> 
                                 <strong>Opciones de registro</strong>
                                 <span class="glyphicon glyphicon-chevron-down"></span>
@@ -146,31 +163,36 @@ input[type="password"]:focus {
                                     <div class="navbar-login">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                
-                                                
-                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Categorias" asp-action="registro"><strong>Registrar Categorías</strong></a>
-                                                
+
+
+                                                <p class="text-center">
+                                                    <a class="btn btn-light btn-block" asp-controller="Categorias"
+                                                        asp-action="registro"><strong>Registrar Categorías</strong></a>
+
                                                 </p>
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Productos" asp-action="registro"><strong>Registrar Productos</strong></a>
-                                                
+                                                    <a class="btn btn-light btn-block" asp-controller="Productos"
+                                                        asp-action="registro"><strong>Registrar Productos</strong></a>
+
                                                 </p>
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Categorias" asp-action="registro"><strong>Registrar Categorías</strong></a>
-                                                
+                                                    <a class="btn btn-light btn-block" asp-controller="Categorias"
+                                                        asp-action="registro"><strong>Registrar Categorías</strong></a>
+
                                                 </p>
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Sucursal" asp-action="registro"><strong>Registrar Sucursales</strong></a>
-                                                
+                                                    <a class="btn btn-light btn-block" asp-controller="Sucursal"
+                                                        asp-action="registro"><strong>Registrar Sucursales</strong></a>
+
                                                 </p>
-                                               
-                                                
+
+
                                                 <div class="navbar-login navbar-login-session">
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <p class="text-center">
-                                                                <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                                                <a asp-controller="Cuenta" asp-action="Logout"
+                                                                    class="btn btn-danger btn-block">Cerrar Sesion</a>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -180,12 +202,13 @@ input[type="password"]:focus {
                                     </div>
                                 </li>
                                 <li class="divider"></li>
-                                
+
                             </ul>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user"></span> 
                                 <strong>Mi Cuenta</strong>
                                 <span class="glyphicon glyphicon-chevron-down"></span>
@@ -196,130 +219,50 @@ input[type="password"]:focus {
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <p class="text-center">
-                                                    <a  class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="CambiarContraseña"><strong>Cambiar Contraseña</strong></a>
-                                                </p>                                                
-                        
-                                                <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="HistorialUsuario"><strong>Historial de Consumo</strong></a>
-                                                </p>
-                                                
-                                                <div class="navbar-login navbar-login-session">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <p class="text-center">
-                                                                <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-danger btn-block">Cerrar Sesion</a>
-                                                            </p>
-=======
-
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-user"></span> 
-                                        <strong>Opcionesss</strong>
-                                        <span class="glyphicon glyphicon-chevron-down"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="navbar-login">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <p class="text-center">
-                                                            <a  class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="CambiarContraseña"><strong>Cambiar Contraseña</strong></a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="divider"></li>
-                                    </ul>
-                                </li>
-
-
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-user"></span> 
-                                        <strong>Opciones</strong>
-                                        <span class="glyphicon glyphicon-chevron-down"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="navbar-login">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <p class="text-center">
-                                                            <a  class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="CambiarContraseña"><strong>Cambiar Contraseña</strong></a>
-                                                        </p>
-                                                        <p class="text-center">
-                                                            <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="crearrol"><strong>Crear rol</strong></a>
-                                                        </p>
-                                                        <p class="text-center">
-                                                            <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="asociarrol"><strong>Asociar Rol</strong></a>
-                                                        </p>
-                                                        <p class="text-center">
-                                                            <a class="btn btn-light btn-block" asp-controller="Reserva" asp-action="Reservas"><strong>Ver Reservas</strong></a>
-                                                        </p>
-                                                        <p class="text-center">
-                                                            <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="asociarrol"><strong>Ver Pedidos</strong></a>
-                                                        </p>
-                                                        <p class="text-center">
-                                                            <a class="btn btn-light btn-block" asp-controller="Categorias" asp-action="registro"><strong>Registrar Categorías</strong></a>                                                       
-                                                        </p>
-                                                        <p class="text-center">
-                                                            <a class="btn btn-light btn-block" asp-controller="Productos" asp-action="registro"><strong>Registrar Productos</strong></a>                                                       
-                                                        </p>
-                                                        <p class="text-center">
-                                                            <a class="btn btn-light btn-block" asp-controller="Categorias" asp-action="registro"><strong>Registrar Categorías</strong></a>                                                      
-                                                        </p>
-                                                        <p class="text-center">
-                                                            <a class="btn btn-light btn-block" asp-controller="Sucursal" asp-action="registro"><strong>Registrar Sucursales</strong></a>                                                      
-                                                        </p>
-                                                        
-                                                        <div class="navbar-login navbar-login-session">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <p class="text-center">
-                                                                        <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-danger btn-block">Cerrar Sesion</a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
->>>>>>> caf9144b104620a1e6c52b2d436f2df7087a37d4
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="divider"></li>
-                                    </ul>
-                                </li>
-                            }
-                            else{
-                                <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-user"></span> 
-                                <strong>Bienvenido(a), @Context.User.Identity.Name</strong>
-                                <span class="glyphicon glyphicon-chevron-down"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="navbar-login">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <p class="text-center">
-                                                    <a  class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="CambiarContraseña"><strong>Cambiar Contraseña</strong></a>
+                                                    <a class="btn btn-light btn-block"
+                                                        asp-controller="Cuenta"
+                                                        asp-action="CambiarContrasena"><strong>Cambiar
+                                                            Contraseña</strong></a>
                                                 </p>
                                                 <p class="text-center">
-                                                    <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="HistorialUsuario"><strong>Historial de Consumo</strong></a>
+                                                    <a class="btn btn-light btn-block"
+                                                        asp-controller="Reserva"
+                                                        asp-action="Reservas"><strong>Ver Informe</strong></a>
                                                 </p>
-                                               
-                                                
+                                                <p class="text-center">
+                                                    <a class="btn btn-light btn-block"
+                                                        asp-controller="Cuenta"
+                                                        asp-action="HistorialUsuario"><strong>Historial de
+                                                            Consumo</strong></a>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
-=======
+
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p class="text-center">
+                                                    <a asp-controller="Cuenta" asp-action="Logout"
+                                                        class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                                    
+                        </li>
+
+
+
+                        }                      
+                        else{
+                                <ul class="nav navbar-nav navbar-right">
                                     <li class="nav-item dropdown">
-                                        <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown"
+                                            href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                             <span class="glyphicon glyphicon-user"></span> 
                                             <strong>Bienvenido(a), @Context.User.Identity.Name</strong>
                                             <span class="glyphicon glyphicon-chevron-down"></span>
@@ -330,33 +273,45 @@ input[type="password"]:focus {
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <p class="text-center">
-                                                                <a  class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="CambiarContraseña"><strong>Cambiar Contraseña</strong></a>
+                                                                <a class="btn btn-light btn-block"
+                                                                    asp-controller="Cuenta"
+                                                                    asp-action="CambiarContrasena"><strong>Cambiar
+                                                                        Contraseña</strong></a>
                                                             </p>
+                                                            
                                                             <p class="text-center">
-                                                                <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="PedidoProducto"><strong>Compras</strong></a>
-                                                            </p>
-                                                            <p class="text-center">
-                                                                <a class="btn btn-light btn-block" asp-controller="Cuenta" asp-action="HistorialUsuario"><strong>Historial de Consumo</strong></a>
+                                                                <a class="btn btn-light btn-block"
+                                                                    asp-controller="Cuenta"
+                                                                    asp-action="HistorialUsuario"><strong>Historial de
+                                                                        Consumo</strong></a>
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
->>>>>>> caf9144b104620a1e6c52b2d436f2df7087a37d4
 
                                                 <div class="navbar-login navbar-login-session">
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <p class="text-center">
-                                                                <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                                                <a asp-controller="Cuenta" asp-action="Logout"
+                                                                    class="btn btn-danger btn-block">Cerrar Sesion</a>
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
+
                                         </ul>
                                     </li>
                                 </ul>
+
                             }
+
+
+
+                                //CREAR MODEL: PRODUCTO , CATEGORIA, RESERVA
+                                //CREAR VIEWS: FICHA-PRODUCTO, BOLSA-COMPRA, check out
+                                //CREAR TABLAS: PEDIDO
                         }
                     </ul>
                 </div>
@@ -382,20 +337,18 @@ input[type="password"]:focus {
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js" asp-fallback-test="window.jQuery" crossorigin="anonymous"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+            </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal" crossorigin="anonymous"
+            integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+            </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
