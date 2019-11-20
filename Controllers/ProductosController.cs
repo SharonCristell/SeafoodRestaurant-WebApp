@@ -3,6 +3,7 @@ using System.Linq;
 
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProyectoPM.Models;
 
 namespace ProyectoPM.Controllers
@@ -43,6 +44,15 @@ namespace ProyectoPM.Controllers
           ViewBag.pE = producto;
           
           return View();
+        }
+        public IActionResult ComprasRealizadas(){
+            var usuarios = _context.Usuarios.ToList();
+            var compras = _context.Compras.Include(p => p.Producto).ToList();
+
+            ViewBag.compras = compras;
+            ViewBag.usuarios = usuarios;
+
+            return View();
         }
     }
 }

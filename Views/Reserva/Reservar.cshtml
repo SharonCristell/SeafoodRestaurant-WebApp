@@ -2,7 +2,7 @@
     ViewData["Title"] = "Reservas";
     
     var sucNom=(List<Sucursal>) ViewBag.sucNom;
-    var id = ViewBag.Id;
+   
     var mesas = ViewBag.Nmesa;
     var sucursalId = ViewBag.IdentificadorSucursal;
 }
@@ -55,7 +55,7 @@
                 <option value="4">3pm - 5pm</option>
             </select>
         </div>
-        <input type="hidden" name="id" value="@sucursalId">
+        <input type="hidden" name="SucursalId" value="@sucursalId">
         <div class="form-group">
             <button style="background-color: green" class="btn btn-primary btn-lg btn-block" type="submit">Completar Reserva</button>
         </div>

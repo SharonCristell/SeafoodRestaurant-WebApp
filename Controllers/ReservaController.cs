@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
@@ -56,7 +55,6 @@ namespace ProyectoPM.Controllers
           var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
           
             
-          ViewBag.Id= sucursale;
           ViewBag.sucNom=sucursal;  
           ViewBag.Nmesa = sucursale.N_Mesas;
           ViewBag.IdentificadorSucursal = id;
@@ -64,17 +62,33 @@ namespace ProyectoPM.Controllers
         }
 
         [HttpPost]
-        public IActionResult Reservar(int id, Reserva r)
+        public IActionResult Reservar(int SucursalId, Reserva r, int mesa, int horario, String fecha)
         {
           var user = _um.FindByNameAsync(User.Identity.Name).Result;
-          var sucursal = _context.Sucursales.Where(x=>x.Id==id).ToList();
-          var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
-          var registroReservas = _context.Reservas.ToList();
+          var sucursal = _context.Sucursales.Where(x=>x.Id==SucursalId).ToList();
+          var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==SucursalId);
+          var registroReservas = _context.Reservas.Where(x => x.SucursalId==SucursalId && x.Fecha==fecha && x.Mesa==mesa && x.Horario==horario).ToList();
+          //var reserva = _context.Reservas.Include(res => res.Sucursal).Where(x=> x.SucursalId==SucursalId && r.Fecha==fecha && x.Mesa==mesa && x.Horario==horario).ToList();
 
           if (ModelState.IsValid)
           {
-            /*
+             if(registroReservas.Count==0){
+                  r.Id = 0;
+                  r.Fecha = fecha;
+                  r.Mesa = mesa;
+                  r.Horario = horario;
+                  r.UserName = user.UserName;
+                  r.SucursalId = SucursalId;
+                  r.Sucursal = sucursale;
 
+                  _context.Add(r);
+                  _context.SaveChanges(); 
+                  return RedirectToAction("index", "home");
+              }
+              else{
+                return View();
+              }
+            /*
             foreach (var item in registroReservas)
             {
                 if (item.SucursalId==id && item.Fecha==fecha && item.Mesa==mesa &&item.Horario==horario)
@@ -93,30 +107,7 @@ namespace ProyectoPM.Controllers
 
                   return RedirectToAction("Index", "Reserva");
                 }
-            }
-            
-
-            
-            var reserva = _context.Reservas.Include(res => res.Sucursal).
-            Where(x=>r.Fecha==fecha && x.Mesa==mesa && x.Horario==horario).ToList();
-             if(reserva.Count==0){
-                  r.Fecha = fecha;
-                  r.Mesa = mesa;
-                  r.Horario = horario;
-                  r.UserName = user.UserName;
-                  r.SucursalId = id;
-                  r.Sucursal = sucursale;
-
-                  _context.Add(r);
-                  _context.SaveChanges(); 
-                return RedirectToAction("Index", "Reserva");
-              }
-              else{
-                return View();
-              }
-
-           */ 
-
+            }*/
           }                   
 
           return View();
@@ -140,6 +131,9 @@ namespace ProyectoPM.Controllers
           
           ViewBag.r = reservas;
           ViewBag.u = usuarios; 
+
+
+
 
           return View();
         }

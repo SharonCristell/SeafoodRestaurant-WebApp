@@ -1,23 +1,23 @@
 @{
     ViewData["Title"] = "Home Page";
-    var reserva = (List<Reserva>)ViewBag.r;
+    var compras = (List<Compras>) ViewBag.compras;
 }
 
-@model List<Reserva>
+@model List<Compras>
 
     <div class="container">
         <div class="row">
                 <div class="col-sm">
                         <div class="text-center">
-                                <h1 style="color: green">Lista de Reservas</h1>
+                                <h1 style="color: green">Lista de Compras</h1>
                         </div>
                 </div>
         </div>
         <div class="fondoIndex">
             <div class="row">
-                @if(reserva.Count==0){
+                @if(compras.Count==0){
                     <div class="col-sm-12">
-                        <h2 style="color: red" class="text-center">No hay reservas registradas</h2>
+                        <h2 style="color: red" class="text-center">No hay compras registradas</h2>
                     </div>
                 }
                 else{  
