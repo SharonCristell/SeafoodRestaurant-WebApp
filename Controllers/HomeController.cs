@@ -21,6 +21,12 @@ namespace ProyectoPM.Controllers
             
             return View();
         }
+
+        public IActionResult Nosotros()
+        {
+            return View();
+        }
+
         public IActionResult Reserva()
         {
           var lista = _context.Sucursales.ToList();
