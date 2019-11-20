@@ -1,14 +1,62 @@
+@{
+    ViewData["Title"] = "Home Page";
+    var sucursal = (List<Sucursal>)ViewBag.s;
+}
+
 @model List<Sucursal>
 
-<h1>Lista de Sucursales</h1>
+<div class="container">
+        <div class="row">
+                <div class="col-sm">
+                        <div class="text-center">
+                                <h1 style="color: green">Lista de Sucursales</h1>
+                        </div>
+                </div>
+        </div>
+        <div class="fondoIndex">
+            <div class="row">
+                @if(sucursal.Count==0){
+                    <div class="col-sm-12">
+                        <h2 style="color: red" class="text-center">No hay sucursales registradas</h2>
+                    </div>
+                }
+                else{  
+                        
 
-@if (Model.Count == 0) {
-    <p>No hay sucursales registradas</p>
-}
-
-<ul class="list">
-@foreach (var item in Model)
-{
-    <li>@item.Nombre</li>
-}
-</ul>
+                        <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-6">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Dirección</th>
+                                        <th scope="col">Correo</th>
+                                        <th scope="col">Foto</th>
+                                        <th scope="col">Telefóno</th>
+                                        <th scope="col">Distrito</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(var s in sucursal){
+                                            <tr>
+                                                <th scope="row">@s.Id</th>
+                                                <td>@s.Nombre</td>
+                                                <td>@s.Direccion</td>
+                                                <td>@s.Correo</td>
+                                                <td><img src="@s.Foto"></td>
+                                                <td>@s.Telefono</td>
+                                                <td>
+                                                    @if(s.Distrito != null){
+                                                        @s.Distrito.Nombre
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                        </div>
+                    
+                }
+            </div>
+        </div>             
+    </div>
