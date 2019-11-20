@@ -94,6 +94,14 @@ namespace ProyectoPM.Controllers
                 }
             }
 
+            /*
+            var reseva = _context.Reservas.Include(res => res.Sucursal).Where(x=>x.Id==id).ToList();
+             @if(sucursal.Count==0){
+               
+              }
+
+            */
+
           }                   
 
           return View();
