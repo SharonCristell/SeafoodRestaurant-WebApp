@@ -28,45 +28,22 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Nombres</th>
                                         <th scope="col">Apellidos</th>
-                                        <th scope="col">Correo de contacto</th>
-                                        <th scope="col">Teléfono de contacto</th>
-                                        <th scope="col">Descripcion</th>
-                                        <th scope="col">Sucursal</th>
-                                        <th scope="col">N° Mesa</th>
-                                        <th scope="col">Fecha</th>
-                                        <th scope="col">Horario</th>
+                                        <th scope="col">Producto/th>
+                                        <th scope="col">Precio unitario</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Monto Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach(var m in reserva){
+                                        @foreach(var c in compras){
                                             <tr>
-                                                <th scope="row">@m.Id</th>
-                                                <td>@m.Nombre</td>
-                                                <td>@m.Apellido</td>
-                                                <td>@m.Email</td>
-                                                <td>@m.Celular</td>
-                                                <td>@m.Descripcion</td>
-                                                <td>
-                                                    @if(m.Sucursal != null){
-                                                        @m.Sucursal.Nombre
-                                                    }
-                                                </td>
-                                                <td>Mesa @m.Mesa</td>
-                                                <td>@m.Fecha</td>
-                                                @if (@m.Horario==1)
-                                                {
-                                                    <td>9am-11am</td>
-                                                }
-                                                @if (@m.Horario==2)
-                                                {
-                                                    <td>11am-1pm</td>
-                                                }@if (@m.Horario==3)
-                                                {
-                                                    <td>1pm-3pm</td>
-                                                }@if (@m.Horario==4)
-                                                {
-                                                    <td>3pm-4pm</td>
-                                                }
+                                                <th scope="row">@c.IdCompra</th>
+                                                <td>@c.Nombres</td>
+                                                <td>@c.Apellidos</td>
+                                                <td>@c.Producto.Nombre</td>
+                                                <td>@c.Producto.Precio</td>
+                                                <td>@c.Cantidad</td>
+                                                <td>@c.TotalMonto</td>
                                             </tr>
                                         }
                                     </tbody>
