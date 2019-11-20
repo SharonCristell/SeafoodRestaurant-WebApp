@@ -77,14 +77,10 @@ body {
 }
 
 .sucursalInfo{
-  width:350px;
   border: 1px solid black;
   background-color: rgb(245, 245, 245);
-  margin: 10px 20px;
-  padding:10px 20px;
   border:solid 1px #ccc;
-  animation-delay: 3s;
-  margin: auto;
+  margin: 15px auto 0 auto;
 }
 
 

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProyectoPM.Models;
 
 namespace ProyectoPM.Controllers
@@ -44,9 +45,8 @@ namespace ProyectoPM.Controllers
 
         public IActionResult Ubicanos()
         {
-            var sucursales = _context.Sucursales.ToList();
-
-            ViewBag.su = sucursales;
+            var sucursales = _context.Sucursales.Include(dis => dis.Distrito).ToList();
+            ViewBag.s = sucursales;
 
             return View();
         

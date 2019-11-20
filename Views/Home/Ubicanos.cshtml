@@ -1,7 +1,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    var sucursal = (List<Sucursal>)ViewBag.su;
+    var sucursal = (List<Sucursal>)ViewBag.s;
  
 }
 @model List<Sucursal>
@@ -17,34 +17,40 @@
                         <div class="text-center">
                                 <h2>Ubicanos en nuestras siguientes sucursales</h2>
                         </div>
+                        <hr>
+                        <br>
                 </div>
         </div>
         @if(sucursal.Count==0){
                 <h2 style="color: red" class="text-center">No se encontraron resultados</h2>
         }else{
-                <div class="fondo">
-                        <div class="row am">
-                                @foreach (var s in sucursal)
-                                {
-                                        <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-3">
-                                                <div class="sucursalInfo">
-                                                        
-                                                                <h1 style="text-align: center">@s.Nombre</h1>
-                                                                <p style="text-align: center">@s.Direccion</p>
-                                                                <p style="text-align: center">@s.Distrito</p>
-                                                                <p style="text-align: center">@s.Correo</p>
-                                                                <div>
-                                                                <iframe src="@s.DireccionMaps" 
-                                                                width="300" height="350" frameborder="0" 
-                                                                style="border:0;" allowfullscreen=""></iframe>
-                                                                                                                                
-                                                                </div>
-
-                                                       
-                                                </div>
+                <div class="row">
+                        @foreach (var s in sucursal)
+                        {
+                                <div class="col-md-4" >
+                                        <div class="sucursalInfo">   
+                                        <div>               
+                                                <div class="card">
+                                                        <div class="card-header text-white bg-primary text-dark text-center" style="font-family: Raleway,helvetica,arial,sans-serif; font-size: 25px;" >
+                                                        <strong>@s.Nombre</strong>
+                                                        </div>
+                                                </div>  
+                                                <ul class="about-lista;">  
+                                                        <li>Distrito: </li>
+                                                        <p style="text-align: center;">@s.Distrito.Nombre</p>
+                                                        <hr>
+                                                        <li>Dirección: @s.Direccion</li>
+                                                        <li>Correo: @s.Correo</li>
+                                                </ul>
                                         </div>
-                                }
-                        </div>
+                                        <div style="text-align:center;">
+                                                <iframe src="@s.DireccionMaps" width="300" height="350" frameborder="0" 
+                                                        style="border:0;" allowfullscreen="">
+                                                </iframe>
+                                        </div>
+                                        </div>
+                                </div>
+                        }
                 </div>
         }
 </div>
