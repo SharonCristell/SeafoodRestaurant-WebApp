@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoPM.Models;
 
 namespace ProyectoPM.Migrations
 {
     [DbContext(typeof(RestauranteContext))]
-    partial class RestauranteContextModelSnapshot : ModelSnapshot
+    [Migration("20191119155102_mesas")]
+    partial class mesas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -306,12 +308,6 @@ namespace ProyectoPM.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired();
-
-                    b.Property<int>("Fecha");
-
-                    b.Property<int>("Horario");
-
-                    b.Property<int>("Mesa");
 
                     b.Property<string>("Nombre")
                         .IsRequired();

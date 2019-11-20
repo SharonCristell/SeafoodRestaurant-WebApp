@@ -33,7 +33,7 @@ namespace ProyectoPM.Models
         [EmailAddress]
         [Display(Name="Correo Electrónico")]
         public string Correo{get;set;}
-
+        public int N_Mesas { get; set; }
         [Required]
         [Display(Name="DireccionMaps")]
         public string DireccionMaps{get;set;}
@@ -42,6 +42,5 @@ namespace ProyectoPM.Models
         public int DistritoId { get; set; }
 
         public List<Reserva> Reservas { get; set; }   
-      
     }
 }
