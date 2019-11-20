@@ -64,7 +64,7 @@ namespace ProyectoPM.Controllers
         }
 
         [HttpPost]
-        public IActionResult Reservar(int id, Reserva r, int mesa, int horario, String fecha)
+        public IActionResult Reservar(int id, Reserva r)
         {
           var user = _um.FindByNameAsync(User.Identity.Name).Result;
           var sucursal = _context.Sucursales.Where(x=>x.Id==id).ToList();
@@ -73,6 +73,7 @@ namespace ProyectoPM.Controllers
 
           if (ModelState.IsValid)
           {
+            /*
 
             foreach (var item in registroReservas)
             {
@@ -93,14 +94,28 @@ namespace ProyectoPM.Controllers
                   return RedirectToAction("Index", "Reserva");
                 }
             }
+            
 
-            /*
-            var reseva = _context.Reservas.Include(res => res.Sucursal).Where(x=>x.Id==id).ToList();
-             @if(sucursal.Count==0){
-               
+            
+            var reserva = _context.Reservas.Include(res => res.Sucursal).
+            Where(x=>r.Fecha==fecha && x.Mesa==mesa && x.Horario==horario).ToList();
+             if(reserva.Count==0){
+                  r.Fecha = fecha;
+                  r.Mesa = mesa;
+                  r.Horario = horario;
+                  r.UserName = user.UserName;
+                  r.SucursalId = id;
+                  r.Sucursal = sucursale;
+
+                  _context.Add(r);
+                  _context.SaveChanges(); 
+                return RedirectToAction("Index", "Reserva");
+              }
+              else{
+                return View();
               }
 
-            */
+           */ 
 
           }                   
 
