@@ -1,4 +1,5 @@
 
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -58,29 +59,44 @@ namespace ProyectoPM.Controllers
           ViewBag.Id= sucursale;
           ViewBag.sucNom=sucursal;  
           ViewBag.Nmesa = sucursale.N_Mesas;
+          ViewBag.IdentificadorSucursal = id;
           return View();
         }
 
         [HttpPost]
-        public IActionResult Reservar(int id, Reserva r)
+        public IActionResult Reservar(int id, Reserva r, int mesa, int horario, String fecha)
         {
-            var user = _um.FindByNameAsync(User.Identity.Name).Result;
-            var sucursal = _context.Sucursales.Where(x=>x.Id==id).ToList();
-            var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
-            
-                                  
-                    
-                    r.UserName=user.UserName;
-                    r.Sucursal=null;
+          var user = _um.FindByNameAsync(User.Identity.Name).Result;
+          var sucursal = _context.Sucursales.Where(x=>x.Id==id).ToList();
+          var sucursale = _context.Sucursales.FirstOrDefault(x=> x.Id==id);
+          var registroReservas = _context.Reservas.ToList();
 
-                    _context.Add(r);
-                    _context.SaveChanges();                   
-                   
-                    return RedirectToAction("Index", "Reserva");
-                
-                 
-            
-           
+          if (ModelState.IsValid)
+          {
+
+            foreach (var item in registroReservas)
+            {
+                if (item.SucursalId==id && item.Fecha==fecha && item.Mesa==mesa &&item.Horario==horario)
+                {
+                    return View();
+                } else {
+                  r.Fecha = fecha;
+                  r.Mesa = mesa;
+                  r.Horario = horario;
+                  r.UserName = user.UserName;
+                  r.SucursalId = id;
+                  r.Sucursal = sucursale;
+
+                  _context.Add(r);
+                  _context.SaveChanges(); 
+
+                  return RedirectToAction("Index", "Reserva");
+                }
+            }
+
+          }                   
+
+          return View();
         }
 
         public IActionResult MisReservas()

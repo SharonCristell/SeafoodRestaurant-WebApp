@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoPM.Models
@@ -27,7 +28,7 @@ namespace ProyectoPM.Models
         [Required]
         public int Mesa { get; set; }
         [Required]
-        public DataType Fecha { get; set; }
+        public String Fecha { get; set; }
         [Required]
         public int Horario { get; set; }
         [Required]

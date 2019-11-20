@@ -4,6 +4,7 @@
     var sucNom=(List<Sucursal>) ViewBag.sucNom;
     var id = ViewBag.Id;
     var mesas = ViewBag.Nmesa;
+    var sucursalId = ViewBag.IdentificadorSucursal;
 }
 @model Reserva
 
@@ -11,7 +12,7 @@
 
 <div class="container">
     <h1 style="text-align:center">Registro de reserva</h1>
-    <form asp-action="reservar" method="post">
+    <form asp-action="~/Reserva/Reservar" method="post">
         <div asp-validation-summary="All"></div>
         <div class="form-group">
             <label>Nombres:</label>
@@ -35,7 +36,7 @@
         </div>  
         <div class="form-group">
             <label>Seleccione una mesa disponible:</label>
-            <select name="Mesa" id="" class="form-control" style="width:100px;"> 
+            <select name="mesa" id="" class="form-control" style="width:100px;"> 
                 @for (int i = 1; i <= mesas; i++)
                 {
                     <option value="@i">Mesa @i</option>
@@ -43,28 +44,18 @@
             </select>
         <div class="form-group">
             <label>Fecha de reserva:</label>
-            <input asp-for="Fecha">
+            <input asp-for="Fecha" type="Date">
         </div>
         <div class="form-group">
             <label>Seleccione un horario:</label>
-            <select name="Horario" id="" class="form-control" style="width:300px">
+            <select name="horario" id="horario" class="form-control" style="width:300px">
                 <option value="1">9am - 11am</option>
                 <option value="2">11am - 1pm</option>
                 <option value="3">1pm - 3pm</option>
                 <option value="4">3pm - 5pm</option>
             </select>
         </div>
-        <div class="form-group">
-        <label asp-for="Sucursal"></label>
-        <select asp-for="SucursalId" class="form-control">
-            @foreach (var item in sucNom)
-            {
-                <option value="@item.Id">@item.Nombre</option>
-            }
-        </select>
-        </div>
-    
-        
+        <input type="hidden" name="id" value="@sucursalId">
         <div class="form-group">
             <button style="background-color: green" class="btn btn-primary btn-lg btn-block" type="submit">Completar Reserva</button>
         </div>
