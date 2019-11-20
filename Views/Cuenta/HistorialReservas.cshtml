@@ -1,49 +1,80 @@
 @{
     ViewData["Title"] = "Home Page";
-    var reserva = (List<Reserva>)ViewBag.r;    
+    var reserva = (List<Reserva>)ViewBag.r;
 }
+
 @model List<Reserva>
-<div class="container">
+
+    <div class="container">
         <div class="row">
                 <div class="col-sm">
                         <div class="text-center">
-                                <h1 style="color: green">Mis Reservas</h1>
+                                <h1 style="color: green">Lista de Reservas</h1>
                         </div>
                 </div>
         </div>
-                <div class="row">
-                        <div class="col-sm-12">
-                                <div class="row">
-                                        <div class="col-sm">
-                                                <div class="text-center">
-                                                        <h1>Reservas efectuadas</h1>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="fondoIndex">
-                                        <div class="row">
-                                                @if(reserva.Count==0){
-                                                        <div class="col-sm-12">
-                                                                <h2 style="color: red" class="text-center">No tiene reservas registradas</h2>
-                                                        </div>
-                                                }else{  
-                                                @foreach (var r in reserva)
+        <div class="fondoIndex">
+            <div class="row">
+                @if(reserva.Count==0){
+                    <div class="col-sm-12">
+                        <h2 style="color: red" class="text-center">No hay reservas registradas</h2>
+                    </div>
+                }
+                else{  
+                        <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-12">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombres</th>
+                                        <th scope="col">Apellidos</th>
+                                        <th scope="col">Correo de contacto</th>
+                                        <th scope="col">Teléfono de contacto</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Sucursal</th>
+                                        <th scope="col">N° Mesa</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Horario</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(var m in reserva){
+                                            <tr>
+                                                <th scope="row">@m.Id</th>
+                                                <td>@m.Nombre</td>
+                                                <td>@m.Apellido</td>
+                                                <td>@m.Email</td>
+                                                <td>@m.Celular</td>
+                                                <td>@m.Descripcion</td>
+                                                <td>
+                                                    @if(m.Sucursal != null){
+                                                        @m.Sucursal.Nombre
+                                                    }
+                                                </td>
+                                                <td>Mesa @m.Mesa</td>
+                                                <td>@m.Fecha</td>
+                                                @if (@m.Horario==1)
                                                 {
-                                                        <div style="margin-top: 10px;margin-bottom: 10px" class="col-sm-6">
-                                                                <div class="reserva">
-                                                                        
-                                                                                <p style="text-align: center">@r.Nombre</p>
-                                                                                <p style="text-align: center">@r.Fecha</p>
-                                                                                <p style="text-align: center">@r.Mesa</p>
-                                                                </div>
-                                                        </div>
-                                                }}
-                                        </div>
-                                </div>
-                                
+                                                    <td>9am-11am</td>
+                                                }
+                                                @if (@m.Horario==2)
+                                                {
+                                                    <td>11am-1pm</td>
+                                                }@if (@m.Horario==3)
+                                                {
+                                                    <td>1pm-3pm</td>
+                                                }@if (@m.Horario==4)
+                                                {
+                                                    <td>3pm-4pm</td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
                         </div>
-                        
-                </div>
-                
-        
-</div>
+                    
+                }
+            </div>
+        </div>             
+    </div>
+

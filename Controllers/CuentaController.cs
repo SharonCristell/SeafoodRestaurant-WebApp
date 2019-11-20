@@ -2,6 +2,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProyectoPM.Models;
 
 
@@ -121,7 +122,7 @@ namespace ProyectoPM.Controllers
         public IActionResult HistorialReservas()
         {
           var user = _um.FindByNameAsync(User.Identity.Name).Result;
-          var reservas = _context.Reservas.Where(x=> x.UserName==User.Identity.Name).ToList();
+          var reservas = _context.Reservas.Include(res => res.Sucursal).Where(x=> x.UserName==User.Identity.Name).ToList();
           
           
           ViewBag.r = reservas;
@@ -131,7 +132,7 @@ namespace ProyectoPM.Controllers
         } 
         public IActionResult HistorialPedidos(){
             var user = _um.FindByNameAsync(User.Identity.Name).Result;
-            var pedidos = _context.Compras.Where(x => x.UserName==User.Identity.Name).ToList();
+            var pedidos = _context.Compras.Include(p => p.Producto).Where(x => x.UserName==User.Identity.Name).ToList();
 
             ViewBag.pedidos = pedidos;
             ViewBag.usuario = user.UserName;
