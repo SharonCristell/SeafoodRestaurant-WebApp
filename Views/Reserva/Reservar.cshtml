@@ -12,6 +12,12 @@
 
 <div class="container">
     <h1 style="text-align:center">Registro de reserva</h1>
+    @if (TempData["ocupado"]!=null)
+    {
+        <div class="text-danger">
+            @TempData["Ocupado"]
+        </div>  
+    }
     <form asp-action="~/Reserva/Reservar" method="post">
         <div asp-validation-summary="All"></div>
         <div class="form-group">
