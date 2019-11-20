@@ -8,14 +8,13 @@
 <div class="container">   
         <form asp-action="~/Reservas/Index" method ="GET">
                 <div class = "row">
-                        
-                    <div class="form-group col-sm-4.4 mr-4">
+                        <div class="form-group col-sm-4.4 mr-4">
                                 <label>Busca tu lugar preferido:</label>
                                 <select name="tipo" id="" class="form-control" style="width: 200px;">
                                         <option value="0">--Seleccionar--</option>
                                         @foreach (var d in distrito)
                                         {
-                                        <option value="@d.Id">@d.Nombre</option>
+                                                <option value="@d.Id">@d.Nombre</option>
                                         }
                                 </select>
                         </div> 
@@ -39,22 +38,38 @@
         </div>
         @if(sucursal.Count==0){
                 <h2 style="color: red" class="text-center">No se encontraron resultados</h2>
-        }else{
-                <div class="fondoIndex">
+        }
+        else{
+                
                         <div class="row">
                                 @foreach (var s in sucursal)
                                 {
-                                        <div  class="text-center" class="col-sm-3">
+                                        <div class="col-md-4">
                                                  <a href="~/Reserva/detalles/@s.Id">
-                                                                <img src="@s.Foto" width="150" height="180"><br><br>
-                                                                <p>@s.Nombre</p>
+                                                        <div class="sucursalInfo">   
+                                                        <div>               
+                                                                <div class="card">
+                                                                        <div class="card-header text-white bg-primary text-dark text-center" style="font-family: Raleway,helvetica,arial,sans-serif; font-size: 25px;" >
+                                                                        <strong>@s.Nombre</strong>
+                                                                        </div>
+                                                                </div>  
+                                                                <ul class="about-lista;">  
+                                                                        <li class="text-dark">Distrito: </li>
+                                                                        <p class="text-dark" style="text-align: center;">@s.Distrito.Nombre</p>
+                                                                        <hr>
+                                                                </ul>
+                                                        </div>
+                                                        <div style="text-align:center;">
+                                                                <iframe src="@s.DireccionMaps" width="300" height="350" frameborder="0" 
+                                                                        style="border:0;" allowfullscreen="">
+                                                                </iframe>
+                                                        </div>
+                                                        </div>
                                                 </a>
-
-                                               
                                         </div>
                                 }
                         </div>
-                </div>
+               
         }
 </div>
 
